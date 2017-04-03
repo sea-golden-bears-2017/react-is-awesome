@@ -1,3 +1,17 @@
 {
-  "extends": "airbnb"
+  extends: "airbnb",
+  env: {
+    browser: true,
+    jasmine: true,
+  },
+  settings: {
+    "import/core-modules": [
+      "react",
+      "react-dom",
+    ],
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": [2, { "ignorePureComponents": true }]
+  },
 }
