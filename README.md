@@ -4,7 +4,7 @@ Welcome to your first foray into the world of ReactJS!
 
 ### Release 0
 
-Work through the official [React tutorial](#)
+Work through the official [React tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
 
 ### Release 1: Setup
 
@@ -31,7 +31,7 @@ $ curl localhost:3000/books/1
 ```
 ### Release 2: Wireframing/planning
 
-<p>In this you'll go read [the documentation]() for the backend provided and see what kind of app you can build.</p>
+<p>In this you'll go read [the documentation](https://github.com/sea-chorus-frogs-2017/react-is-awesome-backend) for the backend provided and see what kind of app you can build.</p>
 <p>Current available endpoints pertain to users, books, and friends.</p>
 
 Some possible apps:
