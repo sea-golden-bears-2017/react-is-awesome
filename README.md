@@ -2,16 +2,16 @@
 ---
 Welcome to your first foray into the world of ReactJS!
 
-## Release 0
+### Release 0
 
 Work through the official [React tutorial](#)
 
-## Release 1: Setup
+### Release 1: Setup
 
 <p>In this release you'll be building an app using api data from the React is Awesome Backend</p>
 
 #### To get started:
-1. Clone down the [backend](#)
+1. Clone down the [backend](https://github.com/sea-chorus-frogs-2017/react-is-awesome-backend)
 2. In the react-is-awesome-backend directory type:
 ```
 $ be bundle
@@ -45,3 +45,13 @@ Some possible apps:
 
 ### Release 3: Build your app!
 ** Good luck! **
+
+To connect to the backend, you have add a couple of keys to your .ajax calls:
+```
+  $.ajax({
+    ...
+    crossDomain: true,
+    xhrFields: { withCredentials: true },
+    ...
+  })
+```
