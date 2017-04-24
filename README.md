@@ -5,7 +5,8 @@ Welcome to your first foray into the world of ReactJS!
 ### Release 0
 
 Work through the official [React tutorial](https://facebook.github.io/react/tutorial/tutorial.html).
-<p>*Note: do this in a different folder outside this repo.*</p>
+
+*Note: do this in a different folder outside this repo.*
 
 ### Release 1: Setup
 
