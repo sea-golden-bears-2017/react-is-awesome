@@ -35,8 +35,8 @@ class App extends Component {
         <div className="App-header">
           <h1>Library</h1>
           <h2>all books sorted by x</h2>
+          <SortBy />
         </div>
-        {/* <SortBy /> */}
         <BookList foundBooks={this.state.books} />
       </div>
     );

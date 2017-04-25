@@ -1,0 +1,9 @@
+table, td {
+  text-align: center;
+  border: 1px solid black;
+}
+
+#bookList {
+  margin: auto;
+  width: 50%;
+}
