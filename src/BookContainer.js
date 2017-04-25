@@ -15,7 +15,7 @@ class BookContainer extends Component {
         <h1>Boox List</h1>
         <ul>{
             this.state.allBooks.map((book) => {
-              return  <Book book={book} />
+              return  <li key={book.id}><Book book={book} /></li>
             })
           }</ul>
       </div>
