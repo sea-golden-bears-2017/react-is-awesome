@@ -27,18 +27,19 @@ class RegistrationForm extends Component {
     e.preventDefault();
     var userName = this.state.name;
     var userPassword = this.state.password;
+
     $.ajax({
       url: 'http://localhost:3000/users',
       method: 'POST',
       data: {
         user: { name: userName,
-                password: userPassword,
-                is_admin: false
+                password: userPassword
         }
       },
       crossDomain: true,
       xhrFields: { withCredentials: true },
     }).done(function(successfulRegistration) {
+
       $.ajax({
         url: 'http://localhost:3000/sessions',
         method: 'POST',
@@ -53,14 +54,17 @@ class RegistrationForm extends Component {
         console.log(successfulSession);
       })
     })
+    // Reset registration fields
+    this.refs.registrationName.value = '';
+    this.refs.registrationPassword.value = '';
   }
 
   render() {
     return (
       <div>
         <form className="reggieform" onSubmit={(e) => this.sendRegistration(e)}>
-          <input type="text" name="name" placeholder="name here" onChange={this.handleNameChange.bind(this)} />
-          <input type="password" name="password" placeholder="password here" onChange={this.handlePasswordChange.bind(this)} />
+          <input type="text" name="name" ref="registrationName" placeholder="name here" onChange={this.handleNameChange.bind(this)} />
+          <input type="password" name="password" ref="registrationPassword" placeholder="password here" onChange={this.handlePasswordChange.bind(this)} />
           <input type="submit" />
         </form>
       </div>

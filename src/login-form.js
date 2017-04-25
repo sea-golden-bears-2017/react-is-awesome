@@ -27,27 +27,30 @@ class LogInForm extends Component {
     e.preventDefault();
     var userName = this.state.name;
     var userPassword = this.state.password;
-      $.ajax({
-        url: 'http://localhost:3000/sessions',
-        method: 'POST',
-        data: {
-          user: { name: userName,
-                  password: userPassword
-          }
-        },
-        crossDomain: true,
-        xhrFields: { withCredentials: true }
-      }).done(function(successfulSession){
-        console.log(successfulSession);
-      });
+    $.ajax({
+      url: 'http://localhost:3000/sessions',
+      method: 'POST',
+      data: {
+        user: { name: userName,
+                password: userPassword
+        }
+      },
+      crossDomain: true,
+      xhrFields: { withCredentials: true }
+    }).done(function(successfulSession){
+      console.log(successfulSession);
+    });
+    // Reset registration fields
+    this.refs.loginName.value = '';
+    this.refs.loginPassword.value = '';
   }
 
   render() {
     return (
       <div>
         <form className="login-form" onSubmit={(e) => this.sendLogin(e)}>
-          <input type="text" name="name" placeholder="name here" onChange={this.handleNameChange.bind(this)} />
-          <input type="password" name="password" placeholder="password here" onChange={this.handlePasswordChange.bind(this)} />
+          <input type="text" name="name" ref="loginName" placeholder="name here" onChange={this.handleNameChange.bind(this)} />
+          <input type="password" name="password" ref="loginPassword" placeholder="password here" onChange={this.handlePasswordChange.bind(this)} />
           <input type="submit" />
         </form>
       </div>
