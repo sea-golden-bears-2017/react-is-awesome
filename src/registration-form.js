@@ -25,10 +25,8 @@ class RegistrationForm extends Component {
 
   sendRegistration(e) {
     e.preventDefault();
-    var userName = JSON.stringify(this.state.name)
-    var userPassword = JSON.stringify(this.state.password)
-    console.log(this.state.name)
-    console.log(this.state.password)
+    var userName = JSON.stringify(this.state.name);
+    var userPassword = JSON.stringify(this.state.password);
     $.ajax({
       url: 'http://localhost:3000/users',
       method: 'POST',
@@ -40,14 +38,21 @@ class RegistrationForm extends Component {
       },
       crossDomain: true,
       xhrFields: { withCredentials: true },
-    }).done(function(response) {
-      console.log(response);
+    }).done(function(successfulRegistration) {
+      $.ajax({
+        url: 'http://localhost:3000/sessions',
+        method: 'POST',
+        data: {
+          user: { name: userName,
+                  password: userPassword
+          }
+        },
+        crossDomain: true,
+        xhrFields: { withCredentials: true }
+      }).done(function(successfulSession){
+        console.log(successfulSession);
+      })
     })
-    // $.ajax({
-    //   url: "BLANK",
-    //   method: 'POST',
-    //   data:
-    // })
   }
 
   render() {
