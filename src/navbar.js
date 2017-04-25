@@ -4,7 +4,7 @@ import './App.css';
 class NavBarButton extends Component {
   render() {
     return (
-      <button>{this.props.value}</button>
+      <button onClick={() => this.props.onClick()}>{this.props.value}</button>
     )
   }
 }
@@ -14,9 +14,9 @@ class NavBar extends Component {
     return (
       <div>
         <nav>
-          <NavBarButton value="Register"/>
-          <NavBarButton value="Login/Logout"/>
-          <NavBarButton value="Home"/>
+          <NavBarButton value="Register" onClick={() => this.props.onClick("Register")} />
+          <NavBarButton value="Login/Logout" onClick={() => this.props.onClick("Login/Logout")} />
+          <NavBarButton value="Home" onClick={() => this.props.onClick("Home")} />
         </nav>
       </div>
     );
