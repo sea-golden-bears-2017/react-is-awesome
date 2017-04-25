@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BookContainer from './BookContainer.js';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   render() {
     return (
-      <NavBar />
-      <BookContainer />
+      <div>
+        <BookContainer />
+      </div>
     );
   }
 }
