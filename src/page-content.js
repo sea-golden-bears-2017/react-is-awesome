@@ -23,41 +23,27 @@ class PageContent extends Component {
     const registrationForm = <RegistrationForm />;
     const loginForm = <LogInForm />;
     const homepage = <HomePage />;
+    let stateVariable = null;
+
     switch(i){
       case "Register":
-        this.setState({
-          navbar: {
-            selected: i
-          },
-          mainContainer: {
-            content: registrationForm
-          }
-        });
+        stateVariable = registrationForm;
         break;
       case "Login/Logout":
-        this.setState({
-          navbar: {
-            selected: i
-          },
-          mainContainer: {
-            content: loginForm
-          }
-        });
+        stateVariable = loginForm;
         break;
       case "Home":
-        this.setState({
-          navbar: {
-            selected: i
-          },
-          mainContainer: {
-            content: homepage
-          }
-        });
+        stateVariable = homepage;
         break;
       default:
         console.log("OMG errorz");
         break;
     }
+    this.setState( {
+      mainContainer: {
+        content: stateVariable,
+      }
+    })
   }
   render() {
     return (
