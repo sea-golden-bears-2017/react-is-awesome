@@ -10,16 +10,19 @@ class BookContainer extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='bookContainer'>
         <h1>Boox List</h1>
         <ul>{
             this.state.allBooks.map((book) => {
               return <li>
-                      <a className='bookLink' href={`books/${book.id}`}>
+                      <button className='bookLink' id={`${book.id}`}>
                         {`${book.title} by ${book.author}`}
-                      </a>
-                    </li>
-            });
+                      </button>
+                      <button className='delete_btn' id={`${book.id}`}>
+                        Delete Book
+                      </button>
+                     </li>
+            })
           }</ul>
       </div>
     )
