@@ -5,6 +5,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
+        {this.props.content}
       </div>
     );
   }

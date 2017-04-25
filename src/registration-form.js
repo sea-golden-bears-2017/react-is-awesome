@@ -4,7 +4,7 @@ import './App.css';
 class RegistrationForm extends Component {
   render() {
     return (
-      <div>Registration</div>
+      <div>Da Reggie form</div>
     )
   }
 }
