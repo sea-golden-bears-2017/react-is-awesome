@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 
 class BookItem extends Component {
-  constructor() {
-    super();
-    this.state = {
-      books: [{ id: 6, title: "The Mermaids Singing", author: "Miss Lilyan McCullough", publisher: "SAGE Publications", genre: "Reference book" }]
-    };
-  }
   render() {
     return (
-      <div className="Header"><h1>{this.state.books[0].title}</h1></div>
+      <div className="book-pop">
+        <div className="Header"><h1>{this.props.book.title}</h1></div>
+        <div className="Content">
+          <h2>Author: {this.props.book.author}</h2>
+          <ul>
+            <li>Publisher: {this.props.book.publisher}</li>
+            <li>Genre: {this.props.book.genre}</li>
+          </ul>
+        </div>
+      </div>
     )
   }
 }
