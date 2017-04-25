@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './NavBar'
 import BookList from './BookList'
+import Book from './Book'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -11,9 +12,10 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <div className="App-header">
-          <h2>MyShelf</h2>
+          <h1>MyShelf</h1>
         </div>
         <BookList />
+        <Book />
       </div>
     );
   }

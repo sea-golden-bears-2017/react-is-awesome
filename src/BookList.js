@@ -33,8 +33,8 @@ class BookList extends Component {
     return (
       <div className = "BookList-container">
 
-        <div className = "list-left"><ul>{leftList.map((book) => { return <li>{book.title}</li> })}</ul></div>
-        <div className = "list-right"><ul> {rightList.map((book) => { return <li>{book.title}</li> })} </ul></div>
+        <div className = "list-left"><ul>{leftList.map((book) => { return <li><a href="/books/{book.id}">{book.title}</a></li> })}</ul></div>
+        <div className = "list-right"><ul>{rightList.map((book) => { return <li><a href="#">{book.title}</a></li> })} </ul></div>
       </div>
     );
   }
