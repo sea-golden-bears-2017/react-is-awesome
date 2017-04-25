@@ -25,11 +25,22 @@ class RegistrationForm extends Component {
 
   sendRegistration(e) {
     e.preventDefault();
-    console.log("Registered!");
-    fetch('URL', {
+    var userName = JSON.stringify(this.state.name)
+    var userPassword = JSON.stringify(this.state.password)
+    console.log(this.state.name)
+    console.log(this.state.password)
+    $.ajax({
+      url: 'http://localhost:3000/users',
       method: 'POST',
-      data: 'DATA'
-    }).then(function(response) {
+      data: {
+        user: { name: userName,
+                password: userPassword,
+                is_admin: false
+        }
+      },
+      crossDomain: true,
+      xhrFields: { withCredentials: true },
+    }).done(function(response) {
       console.log(response);
     })
     // $.ajax({
