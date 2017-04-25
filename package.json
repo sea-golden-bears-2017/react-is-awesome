@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "jquery": "^3.2.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -22,5 +24,17 @@
     "eject": "react-scripts eject",
     "eslint": "eslint .",
     "autolint": "eslint --fix ."
-  }
+  },
+  "description": "--- Welcome to your first foray into the world of ReactJS!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sea-chorus-frogs-2017/react-is-awesome.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sea-chorus-frogs-2017/react-is-awesome/issues"
+  },
+  "homepage": "https://github.com/sea-chorus-frogs-2017/react-is-awesome#readme"
 }
