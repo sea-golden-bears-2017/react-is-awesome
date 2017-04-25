@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Book from './Book'
 // import BookItem from './Book.js';
 
 class BookContainer extends Component {
@@ -14,14 +15,7 @@ class BookContainer extends Component {
         <h1>Boox List</h1>
         <ul>{
             this.state.allBooks.map((book) => {
-              return <li>
-                      <button className='bookLink' id={`${book.id}`}>
-                        {`${book.title} by ${book.author}`}
-                      </button>
-                      <button className='delete_btn' id={`${book.id}`}>
-                        Delete Book
-                      </button>
-                     </li>
+              return  <Book book={book} />
             })
           }</ul>
       </div>
