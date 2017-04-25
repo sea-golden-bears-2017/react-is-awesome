@@ -1,39 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-var BS                 = require('react-bootstrap'),
-    Input              = BS.Input,
-    Button             = BS.Button;
 
 class Login extends Component {
+constructor(props) {
+  super(props);
+  this.state = { username: '', password: '' };
+}
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(event);
+    this.setState({ username: event.target.username, password: event.target.password });
+  }
   render() {
-    <form>
-      <Input type='name'
-            name='name'
-            label='Name'
-            placeholder='Enter name...'
-            // disabled={this.props.signedIn}
-            // value={this.state.email}
-            // onChange={this.handleInputChange}
-          />
-
-      <Input type='password'
-            name='password'
-            label='Password'
-            placeholder='Enter password...'
-            // disabled={this.props.signedIn}
-            // value={this.state.password}
-            // onChange={this.handleInputChange}
-          />
-
-      <Button className='btn btn-primary'
-              // onClick={this.handleSignInClick}
-              // disabled={this.props.signedIn}
-              >
-        Sign In
-      </Button>
-    </form>
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input ref={ref => (this.username = ref)} value={this.state.username} type="text" placeholder="Username" />
+          <input ref={ref => (this.password = ref)} value={this.state.password} type="password" placeholder="Password" />
+          <input type="submit" />
+        </form>
+      </div>
+    );
   }
 }
 
