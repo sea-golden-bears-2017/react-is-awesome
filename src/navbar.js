@@ -4,7 +4,7 @@ import './App.css';
 class NavBarButton extends Component {
   render() {
     return (
-      <button>CLICK ME</button>
+      <button>{this.props.value}</button>
     )
   }
 }
@@ -14,7 +14,9 @@ class NavBar extends Component {
     return (
       <div>
         <nav>
-          <NavBarButton />
+          <NavBarButton value="Register"/>
+          <NavBarButton value="Login/Logout"/>
+          <NavBarButton value="Home"/>
         </nav>
       </div>
     );
