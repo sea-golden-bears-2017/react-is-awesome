@@ -25,8 +25,8 @@ class RegistrationForm extends Component {
 
   sendRegistration(e) {
     e.preventDefault();
-    var userName = JSON.stringify(this.state.name);
-    var userPassword = JSON.stringify(this.state.password);
+    var userName = this.state.name;
+    var userPassword = this.state.password;
     $.ajax({
       url: 'http://localhost:3000/users',
       method: 'POST',
