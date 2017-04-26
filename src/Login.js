@@ -15,7 +15,7 @@ class Login extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    let loginForm = this
+    let loginForm = this;
     $.ajax({
       type: 'POST',
       url: 'http://localhost:3000/sessions',
