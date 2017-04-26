@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import BookContainer from './BookContainer.js';
+import BookItem from './BookItem';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
