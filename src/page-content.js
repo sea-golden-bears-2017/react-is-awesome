@@ -15,16 +15,16 @@ class PageContent extends Component {
         buttons: ['Register', 'Login', 'Home'],
       },
       mainContainer: {
-        content: null,
+        content: <HomePage />,
       },
       user: {
         userId: null,
       }
     }
   }
-  handlePostLogin(page, loggedInUser){
-    const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
-    page.setState( {
+  handlePostLogin(loggedInUser){
+    const homepage = <HomePage />;
+    this.setState( {
       navbar: {
         buttons: ['Logout', 'Home'],
       },
@@ -38,7 +38,7 @@ class PageContent extends Component {
   }
 
   handleClick(i){
-    const registrationForm = <RegistrationForm handlePostLogin={this.handlePostLogin} pageRef={this} />;
+    const registrationForm = <RegistrationForm handlePostLogin={(id) => this.handlePostLogin(id) } pageRef={this} />;
     const loginForm = <LogInForm handlePostLogin={this.handlePostLogin} pageRef={this} />;
     const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     let stateVariable = null;

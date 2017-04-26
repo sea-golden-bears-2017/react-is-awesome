@@ -51,6 +51,7 @@ class LogInForm extends Component {
   render() {
     return (
       <div>
+        Please Login:
         <form className="login-form" onSubmit={(e) => this.sendLogin(e)}>
           <input type="text" name="name" ref="loginName" placeholder="name here" onChange={this.handleNameChange.bind(this)} />
           <input type="password" name="password" ref="loginPassword" placeholder="password here" onChange={this.handlePasswordChange.bind(this)} />

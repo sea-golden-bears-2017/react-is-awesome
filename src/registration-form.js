@@ -51,7 +51,7 @@ class RegistrationForm extends Component {
         crossDomain: true,
         xhrFields: { withCredentials: true }
       }).done((successfulSession) => {
-        form.props.handlePostLogin(this.props.pageRef, successfulSession);
+        form.props.handlePostLogin(successfulSession);
       })
     })
     // Reset registration fields
@@ -62,6 +62,7 @@ class RegistrationForm extends Component {
   render() {
     return (
       <div>
+        Register Your Information Below:
         <form className="reggieform" onSubmit={(e) => this.sendRegistration(e)}>
           <input type="text" name="name" ref="registrationName" placeholder="name here" onChange={this.handleNameChange.bind(this)} />
           <input type="password" name="password" ref="registrationPassword" placeholder="password here" onChange={this.handlePasswordChange.bind(this)} />

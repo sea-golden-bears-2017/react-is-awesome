@@ -8,7 +8,6 @@ class BookContainer extends Component {
       <div>
         <BookList />
       </div>
-
     )
   }
 }

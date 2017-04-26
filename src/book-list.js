@@ -8,9 +8,10 @@ class BookList extends Component {
     super();
     this.state = {
       allBooks: null,
-    }
+    };
   }
-  getBooks() {
+
+  componentWillMount() {
     let bookList = null;
     $.ajax({
       url: 'http://localhost:3000/books/',
@@ -18,24 +19,24 @@ class BookList extends Component {
       crossDomain: true,
       xhrFields: { withCredentials: true }
     }).done((response) => {
-      return bookList = (
+       bookList = (
         response.map((book) => {
           return (
-            <Book bookInfo={book} />
+            <Book bookInfo={book} key={book.id}/>
           )
         })
       );
+      this.setState({
+        allBooks: bookList,
+      })
     });
-    debugger;
   }
-  // renderBooks(){
-  //
-  // }
-  render() {
 
+  render() {
     return (
       <div>
-        {this.getBooks()}
+        <h1>Here's All The Books We Got. . . </h1>
+        {this.state.allBooks}
       </div>
 
     )

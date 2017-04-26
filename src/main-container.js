@@ -6,7 +6,6 @@ class MainContainer extends Component {
     return (
       <div>
         {this.props.content}
-        
       </div>
     );
   }
