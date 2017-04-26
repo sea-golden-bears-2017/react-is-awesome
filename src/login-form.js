@@ -25,6 +25,7 @@ class LogInForm extends Component {
 
   sendLogin(e) {
     e.preventDefault();
+    // Set form equal to 'this' so it can be used within the ajax call
     var form = this;
     var userName = this.state.name;
     var userPassword = this.state.password;

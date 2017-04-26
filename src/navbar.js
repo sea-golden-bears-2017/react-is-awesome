@@ -9,8 +9,6 @@ class NavBarButton extends Component {
   }
 }
 
-
-
 class NavBar extends Component {
   renderButtons(){
     return (

@@ -5,10 +5,9 @@ import NavBar from './navbar.js';
 import RegistrationForm from './registration-form.js';
 import LogInForm from './login-form.js';
 import HomePage from './homepage.js';
+import $ from 'jquery'
 
 class PageContent extends Component {
-
-
   constructor(){
     super();
     this.state = {
@@ -20,14 +19,15 @@ class PageContent extends Component {
       },
     }
   }
-
-
-
   handlePostLogin(page){
+    const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     page.setState( {
       navbar: {
         buttons: ['Logout', 'Home'],
-      }
+      },
+      mainContainer: {
+        content: homepage,
+      },
     })
   }
 
@@ -37,25 +37,37 @@ class PageContent extends Component {
     const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     let stateVariable = null;
 
-    switch(i){
-      case "Register":
-        stateVariable = registrationForm;
-        break;
-      case "Login":
-        stateVariable = loginForm;
-        break;
-      case "Home":
-        stateVariable = homepage;
-        break;
-      default:
-        console.log("OMG errorz");
-        break;
+    if (i === "Logout"){
+      $.ajax( {
+        url: 'http://localhost:3000/session/',
+        method: 'DELETE',
+        crossDomain: true,
+        xhrFields: { withCredentials: true }
+      }).done((response) => {
+        console.log(response.message)
+      })
     }
-    this.setState( {
-      mainContainer: {
-        content: stateVariable,
+    else {
+      switch(i){
+        case "Register":
+          stateVariable = registrationForm;
+          break;
+        case "Login":
+          stateVariable = loginForm;
+          break;
+        case "Home":
+          stateVariable = homepage;
+          break;
+        default:
+          console.log("OMG errorz");
+          break;
       }
-    })
+      this.setState( {
+        mainContainer: {
+          content: stateVariable,
+        }
+      })
+    }
   }
   render() {
     return (
