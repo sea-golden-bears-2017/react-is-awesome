@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import Book from './Book'
-// import BookItem from './Book.js';
+import Book from './Book';
+import $ from 'jquery';
+
+// import BookItem from './BookItem';
 
 class BookContainer extends Component {
   constructor() {
     super();
     this.state = {
-      allBooks: [{ id: 6, title: "The Mermaids Singing", author: "Miss Lilyan McCullough", publisher: "SAGE Publications", genre: "Reference book"}, { id: 7, title: "The Mermaids Singing: The Sequel", author: "Miss Lilyan McCullough", publisher: "SAGE Publications", genre: "Reference book"}]
+      allBooks: []
     };
+    $.ajax({
+      url: 'http://localhost:3000/books/',
+      crossDomain: true,
+      xhrFields: { withCredentials: true},
+    }).done(response => {this.setState({allBooks: response})});
   }
   render() {
     return (
@@ -22,6 +29,5 @@ class BookContainer extends Component {
     )
   }
 }
-
 
 export default BookContainer;
