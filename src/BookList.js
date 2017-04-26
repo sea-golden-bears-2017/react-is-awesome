@@ -13,8 +13,9 @@ class BookList extends Component {
     };
   }
 
-  clickHandler(newBook) {
-    this.props.updateToBookMode('bookMode', newBook)
+  clickHandler(e, book) {
+    e.preventDefault();
+    this.props.updateToBookMode('bookMode', book)
   }
 
   componentDidMount() {
@@ -40,8 +41,8 @@ class BookList extends Component {
       <div className = "BookList-container">
         <div className = "list-left">
           <ul>{leftList.map((book) => {
-            const handler = () => {
-              this.clickHandler(book)
+            const handler = (e) => {
+              this.clickHandler(e, book)
             };
             return (
             <li key={book.id} ><a onClick={handler} href='#'><Book book={book} mode={'bookTitle'} />
@@ -51,8 +52,8 @@ class BookList extends Component {
         </div>
         <div className = "list-right">
           <ul>{rightList.map((book) => {
-            const handler = () => {
-              this.clickHandler(book)
+            const handler = (e) => {
+              this.clickHandler(e, book)
             };
             return (
             <li key={book.id} ><a onClick={handler} href='#'><Book book={book} mode={'bookTitle'}/>

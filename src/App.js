@@ -10,11 +10,19 @@ class App extends Component {
   constructor(){
     super();
     this.updateToBookMode = this.updateToBookMode.bind(this);
+    this.updateToHome = this.updateToHome.bind(this);
     this.state = {
       mode: 'bookListMode',
       book: null,
     };
   }
+
+  updateToHome() {
+    this.setState({
+      mode: 'bookListMode',
+      book: null,
+    })
+  };
 
   updateToBookMode(mode, book) {
     this.setState({
@@ -26,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavBar updateToHome={this.updateToHome} />
         <div className="App-header">
           <h1>MyShelf</h1>
         </div>
