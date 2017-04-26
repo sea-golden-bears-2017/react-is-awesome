@@ -22,7 +22,8 @@ class BookContainer extends Component {
   }
 
   showBook(book) {
-    console.log(<BookItem book={book}/>)
+    <BookItem book={book} />
+      // return (<BookItem book={book}/>)
   }
 
   render() {

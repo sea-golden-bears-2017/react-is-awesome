@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import $ from 'jquery'
-import BookItem from './BookItem'
+import $ from 'jquery';
+import BookItem from './BookItem';
+import SkyLight from 'react-skylight';
 
 class Book extends Component {
   constructor() {
@@ -24,9 +25,26 @@ class Book extends Component {
   }
 
   render() {
+    const id = this.props.book.id
+    const buttonName = 'Add Book';
     return (
       <div>
-        <button onClick={this.popUpBook} className='bookLink'>
+        <SkyLight hideOnOverLayClicked ref="simpleDialog" title="Hello">
+          <div className="book-pop">
+            <div className="Header"><h1>{this.props.book.title}</h1></div>
+            <div className="Content">
+              <h2>Author: {this.props.book.author}</h2>
+              <ul>
+                <li>Publisher: {this.props.book.publisher}</li>
+                <li>Genre: {this.props.book.genre}</li>
+              </ul>
+            </div>
+            <div className="user-add">
+              <span><button onClick={this.clickHandler}>{buttonName}</button></span>
+            </div>
+          </div>
+        </SkyLight>
+        <button onClick={() => this.refs.simpleDialog.show()} className='bookLink'>
           {`${this.props.book.title} by ${this.props.book.author}`}
         </button>
         <button onClick={this.deleteBook} className='delete_btn'>
