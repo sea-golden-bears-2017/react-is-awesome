@@ -10,12 +10,16 @@ class BookContainer extends Component {
     this.state = {
       allBooks: []
     };
+  }
+
+  componentDidMount() {
     $.ajax({
       url: 'http://localhost:3000/books/',
       crossDomain: true,
       xhrFields: { withCredentials: true},
     }).done(response => {this.setState({allBooks: response})});
   }
+  
   render() {
     return (
       <div className='bookContainer'>
