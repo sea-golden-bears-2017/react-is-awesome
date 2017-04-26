@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BookItem from './BookItem';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   render() {
     return (
-      <NavBar />
-      <BookContainer />
+      <div>
+        <BookItem book={{ id: 6, title: "The Mermaids Singing", author: "Miss Lilyan McCullough", publisher: "SAGE Publications", genre: "Reference book" }} ownsBook={true}/>
+      </div>
     );
   }
 }
