@@ -23,19 +23,17 @@ class PageContent extends Component {
 
 
 
-  handlePostLogin(){
-    // Change state of nav bar
-    // this.setState( {
-    //   navbar: {
-    //     buttons:
-    //   }
-    // })
-    // Navigate to the homepage
+  handlePostLogin(page){
+    page.setState( {
+      navbar: {
+        buttons: ['Logout', 'Home'],
+      }
+    })
   }
 
   handleClick(i){
     const registrationForm = <RegistrationForm handlePostLogin={this.handlePostLogin}/>;
-    const loginForm = <LogInForm handlePostLogin={this.handlePostLogin}/>;
+    const loginForm = <LogInForm handlePostLogin={this.handlePostLogin} pageRef={this} />;
     const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     let stateVariable = null;
 

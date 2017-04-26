@@ -25,6 +25,7 @@ class LogInForm extends Component {
 
   sendLogin(e) {
     e.preventDefault();
+    var form = this;
     var userName = this.state.name;
     var userPassword = this.state.password;
     $.ajax({
@@ -37,10 +38,11 @@ class LogInForm extends Component {
       },
       crossDomain: true,
       xhrFields: { withCredentials: true }
-    }).done(function(successfulSession){
+    }).done((successfulSession) => {
       console.log(successfulSession);
+      form.props.handlePostLogin(this.props.pageRef);
     });
-    this.props.handlePostLogin();
+
     // Reset registration fields
     this.refs.loginName.value = '';
     this.refs.loginPassword.value = '';
