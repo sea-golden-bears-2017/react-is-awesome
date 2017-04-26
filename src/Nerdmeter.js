@@ -3,18 +3,34 @@ import $ from 'jquery';
 import './App.css';
 
 class Results extends Component {
+  constructor() {
+    super();
+    this.state = {
+      friendBooks: [],
+    }
+  }
   componentWillMount() {
     $.ajax({
       url: `http://localhost:3000/users/${this.props.friendObject.id}/books`,
       crossDomain: true,
       xhrFields: { withCredentials: true },
     }).done((response) => {
-      console.log(response);
+      this.setState({ friendBooks: response });
     });
+  }
+  calculateNerdiness() {
+    const books = this.state.friendBooks;
+    let nerdyBooks = 0;
+    for(let i = 0; i < books.length; i++){
+      if(books[i].genre === "Science fiction"){nerdyBooks++}
+    }
+    return(100 * (nerdyBooks / books.length));
   }
   render() {
     return(
-      <p>Your friend is really nerdy!</p>
+      <div>
+        <p>Your friend is {this.calculateNerdiness()}% nerdy!</p>
+      </div>
     )
   }
 }
