@@ -25,6 +25,7 @@ class RegistrationForm extends Component {
 
   sendRegistration(e) {
     e.preventDefault();
+    let form = this;
     var userName = this.state.name;
     var userPassword = this.state.password;
 
@@ -38,8 +39,7 @@ class RegistrationForm extends Component {
       },
       crossDomain: true,
       xhrFields: { withCredentials: true },
-    }).done(function(successfulRegistration) {
-
+    }).done((successfulRegistration) => {
       $.ajax({
         url: 'http://localhost:3000/sessions',
         method: 'POST',
@@ -50,8 +50,8 @@ class RegistrationForm extends Component {
         },
         crossDomain: true,
         xhrFields: { withCredentials: true }
-      }).done(function(successfulSession){
-        console.log(successfulSession);
+      }).done((successfulSession) => {
+        form.props.handlePostLogin(this.props.pageRef, successfulSession);
       })
     })
     // Reset registration fields

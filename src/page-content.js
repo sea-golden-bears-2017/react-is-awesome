@@ -38,7 +38,7 @@ class PageContent extends Component {
   }
 
   handleClick(i){
-    const registrationForm = <RegistrationForm handlePostLogin={this.handlePostLogin}/>;
+    const registrationForm = <RegistrationForm handlePostLogin={this.handlePostLogin} pageRef={this} />;
     const loginForm = <LogInForm handlePostLogin={this.handlePostLogin} pageRef={this} />;
     const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     let stateVariable = null;
