@@ -12,9 +12,11 @@ class App extends Component {
     this.state = {
       books: [],
       sortBooks: "title",
+      filterBooks: "",
     };
 
     this.setSorter = this.setSorter.bind(this);
+    this.setFilter = this.setFilter.bind(this);
   }
 
   componentDidMount() {
@@ -39,14 +41,21 @@ class App extends Component {
     })
   }
 
+  setFilter(filter) {
+    this.setState({
+      filterBooks: filter,
+    })
+  }
+
   render() {
+    {console.log(this.state.filterBooks)}
     return (
       <div className="App">
         <div className="App-header">
           <h1>Library</h1>
           <h2>all books sorted by {this.state.sortBooks}</h2>
           <SortBy sortBooks={this.setSorter}/>
-
+          <FilterBy filterBooks={this.setFilter}/>
         </div>
         <BookList foundBooks={this.state.books} sortThing={this.state.sortBooks}/>
       </div>
