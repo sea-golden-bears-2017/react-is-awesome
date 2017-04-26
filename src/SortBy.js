@@ -4,19 +4,37 @@ import './App.css';
 
 
 class SortBy extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sorter: ""
+    }
 
-  render() {
+    this.change = this.change.bind(this);
+  }
+
+  change(event) {
+
+    this.setState({
+      sorter: event.target.value
+    })
+  }
+
+render() {
     return (
       <div>
-        <select name="select">
-          <option value="value1">author</option>
-          <option value="value2" selected>title</option>
-          <option value="value3">genre</option>
-          <option value="value3">publisher</option>
+        <select id="sorter-selector" onChange={this.change}>
+          <option value="author">author</option>
+          <option value="title">title</option>
+          <option value="genre">genre</option>
+          <option value="publisher">publisher</option>
         </select>
+        {this.state.sorter}
       </div>
+
     )
   }
 }
+
 
 export default SortBy;
