@@ -89,7 +89,9 @@ class PageContent extends Component {
     return (
       <div className="main-container">
         <NavBar onClick={(i) => this.handleClick(i)} buttons={this.state.navbar.buttons}/>
-        <MainContainer content={this.state.mainContainer.content} />
+        <div className="App-intro">
+          <MainContainer content={this.state.mainContainer.content} />
+        </div>
       </div>
     );
   }
