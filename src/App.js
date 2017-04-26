@@ -15,7 +15,7 @@ class Logout extends Component {
     xhrFields: { withCredentials: true },
     }).done((response) => {
       console.log(response)
-      // logoutForm.props.onNewSession(response.user_id);
+      logoutForm.props.onEndSession(response.user_id);
     });
   }
   render() {
@@ -37,10 +37,13 @@ class App extends Component {
   loggedIn(id) {
     this.setState({ mode: 'logged', userId: id });
   }
+  loggedOut() {
+    this.setState({ mode: 'login', userId: '' })
+  }
   render() {
     return (
       <div className="App">
-        <Logout />
+        <Logout onEndSession={() => this.loggedOut()} />
         <div className="App-header">
           <h1>Nerdmeter</h1>
         </div>
