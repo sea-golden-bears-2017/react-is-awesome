@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import $ from 'jquery'
 
 class Book extends Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
   handleClick() {
-    console.log("ALERT: HI!")
+    $.ajax({
+      url: `http://localhost:3000/books/${this.props.book.id}/delete`,
+      // data: {session["user_id"]: 161}
+      type: 'DELETE',
+      crossDomain: true,
+      xhrFields: { withCredentials: true},
+    })
   }
   render() {
     return (
