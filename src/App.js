@@ -3,6 +3,7 @@ import $ from 'jquery';
 import './App.css';
 import BookList from './BookList';
 import SortBy from './SortBy';
+import FilterBy from './FilterBy';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
