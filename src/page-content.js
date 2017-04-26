@@ -17,9 +17,12 @@ class PageContent extends Component {
       mainContainer: {
         content: null,
       },
+      user: {
+        userId: null,
+      }
     }
   }
-  handlePostLogin(page){
+  handlePostLogin(page, userId){
     const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     page.setState( {
       navbar: {
@@ -27,6 +30,9 @@ class PageContent extends Component {
       },
       mainContainer: {
         content: homepage,
+      },
+      user: {
+        userId: userId,
       },
     })
   }
@@ -39,12 +45,22 @@ class PageContent extends Component {
 
     if (i === "Logout"){
       $.ajax( {
-        url: 'http://localhost:3000/session/',
+        url: 'http://localhost:3000/sessions/' + this.state.user.userId,
         method: 'DELETE',
         crossDomain: true,
         xhrFields: { withCredentials: true }
       }).done((response) => {
-        console.log(response.message)
+        this.setState( {
+          navbar: {
+            buttons: ['Register', 'Login', 'Home'],
+          },
+          mainContainer: {
+            content: homepage,
+          },
+          user: {
+            userId: null,
+          }
+        })
       })
     }
     else {

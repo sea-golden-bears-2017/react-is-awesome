@@ -41,7 +41,7 @@ class LogInForm extends Component {
       xhrFields: { withCredentials: true }
     }).done((successfulSession) => {
       console.log(successfulSession);
-      form.props.handlePostLogin(this.props.pageRef);
+      form.props.handlePostLogin(this.props.pageRef, successfulSession);
     });
 
     // Reset registration fields
