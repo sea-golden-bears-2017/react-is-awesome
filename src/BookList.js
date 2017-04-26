@@ -4,22 +4,23 @@ import './BookList.css';
 import './App.css';
 
 class BookList extends Component {
-  
+
   sortBooks() {
-    var sorter = this.props.sortThing;
-    const sorted = this.props.foundBooks.sort(function(a,b) {
-    if (a[sorter] > b[sorter]) {
-      return 1;
-    }
-    if (a[sorter] < b[sorter]) {
-      return -1;
-    }
-    return 0;
-  });
-}
+    const sorter = this.props.sortThing;
+    const sorted = this.props.foundBooks.slice();
+    sorted.sort(function(a,b) {
+      if (a[sorter] > b[sorter]) {
+        return 1;
+      }
+      if (a[sorter] < b[sorter]) {
+        return -1;
+      }
+      return 0;
+    });
+    return sorted;
+  }
 
   render() {
-    {this.sortBooks()}
     return (
       <div id="bookList">
         <table>
@@ -30,7 +31,7 @@ class BookList extends Component {
             <th>Publisher</th>
           </tr>
           {
-        this.props.foundBooks.map((book) => {
+        this.sortBooks().map((book) => {
         return (
           <tr>
             <td>{book.title}</td>

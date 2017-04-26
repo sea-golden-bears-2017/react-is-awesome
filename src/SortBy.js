@@ -20,7 +20,7 @@ class SortBy extends Component {
       <div>
         <select id="sorter-selector" onChange={this.change}>
           <option value="author">author</option>
-          <option value="title">title</option>
+          <option selected="selected" value="title ">title</option>
           <option value="genre">genre</option>
           <option value="publisher">publisher</option>
         </select>
