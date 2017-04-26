@@ -15,9 +15,25 @@ class Friend extends Component {
 }
 
 class FriendList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      list: [],
+    }
+  }
+  componentWillMount() {
+    $.ajax({
+      url: 'http://localhost:3000/users/161/books',
+      crossDomain: true,
+      xhrFields: { withCredentials: true },
+    }).done((response) => {
+      console.log(response);
+      debugger;
+    })
+  }
   render() {
     return(
-    <p></p>
+    <p>{this.state.list}</p>
     )
   }
 }
@@ -26,9 +42,9 @@ class Nerdmeter extends Component {
   render() {
     return (
       <div id="nerdmeter">
-        <p>Hi, you're logged in</p>
         <div id="friend-list">
-          <FriendList />
+          <FriendList userId={this.props.userId} />
+          <p>Hi, you're logged in</p>
         </div>
         <div id="results">
         </div>

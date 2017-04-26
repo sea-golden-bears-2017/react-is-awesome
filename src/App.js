@@ -14,7 +14,6 @@ class App extends Component {
   }
   loggedIn(id) {
     this.setState({ mode: 'logged', userId: id });
-    console.log(this.state)
   }
   render() {
     return (

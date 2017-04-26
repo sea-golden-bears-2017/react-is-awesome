@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './App.css';
-import Nerdmeter from './Nerdmeter'
 
 class Login extends Component {
   constructor(props) {
@@ -21,13 +20,15 @@ class Login extends Component {
       type: 'POST',
       url: 'http://localhost:3000/sessions',
       data: {user: this.state},
+      crossDomain: true,
+      xhrFields: { withCredentials: true },
     }).done((response) => {
       loginForm.props.onNewSession(response.user_id);
     });
-    }
+  };
   render() {
     return (
-      <div className="loginForm">
+      <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" placeholder="Username" onChange={this.handleUsernameChange.bind(this)} />
           <input type="password" placeholder="Password" onChange={this.handlePasswordChange.bind(this)} />
