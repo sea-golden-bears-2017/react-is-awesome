@@ -10,7 +10,10 @@ class App extends Component {
     super();
     this.state = {
       books: [],
+      sortBooks: "title",
     };
+
+    this.setSorter = this.setSorter.bind(this);
   }
 
   componentDidMount() {
@@ -29,15 +32,22 @@ class App extends Component {
     });
   }
 
+  setSorter(sorter) {
+    this.setState({
+      sortBooks: sorter,
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <h1>Library</h1>
-          <h2>all books sorted by x</h2>
-          <SortBy />
+          <h2>all books sorted by {this.state.sortBooks}</h2>
+          <SortBy sortBooks={this.setSorter}/>
+
         </div>
-        <BookList foundBooks={this.state.books} />
+        <BookList foundBooks={this.state.books} sortThing={this.state.sortBooks}/>
       </div>
     );
   }

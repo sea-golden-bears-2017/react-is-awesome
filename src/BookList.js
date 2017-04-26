@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
 import './BookList.css';
 import './App.css';
 
 class BookList extends Component {
-
-// {this.state.books.map(book => <p>{book.title}</p> )}
-//
-// {/* {sortedBooks.map(book => <p>{book.title}</p> )} */}
-//
-// var sortedBooks = this.state.books.sort(function(a,b) {
-//   return a.title > b.title;
-// });
-//
-// }
-
-sortBooks() {
-
+  
+  sortBooks() {
+    var sorter = this.props.sortThing;
+    const sorted = this.props.foundBooks.sort(function(a,b) {
+    if (a[sorter] > b[sorter]) {
+      return 1;
+    }
+    if (a[sorter] < b[sorter]) {
+      return -1;
+    }
+    return 0;
+  });
 }
-render() {
-  return (
-  <div id="bookList">
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>Publisher</th>
-      </tr>
-      {
+
+  render() {
+    {this.sortBooks()}
+    return (
+      <div id="bookList">
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Publisher</th>
+          </tr>
+          {
         this.props.foundBooks.map((book) => {
         return (
           <tr>
@@ -42,10 +43,6 @@ render() {
       }
   </table>
 </div>
-
-
-
-
 )}
 }
 

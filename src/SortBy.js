@@ -6,21 +6,16 @@ import './App.css';
 class SortBy extends Component {
   constructor() {
     super();
-    this.state = {
-      sorter: ""
-    }
 
     this.change = this.change.bind(this);
   }
 
   change(event) {
-
-    this.setState({
-      sorter: event.target.value
-    })
+      const sorter = event.target.value;
+      this.props.sortBooks(sorter);
   }
 
-render() {
+  render() {
     return (
       <div>
         <select id="sorter-selector" onChange={this.change}>
@@ -29,7 +24,6 @@ render() {
           <option value="genre">genre</option>
           <option value="publisher">publisher</option>
         </select>
-        {this.state.sorter}
       </div>
 
     )
