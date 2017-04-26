@@ -11,7 +11,7 @@ class BookItem extends Component {
   clickHandler() {
     const typeName = this.props.ownsBook ? 'delete' : 'patch';
     $.ajax({
-      url: 'http://localhost:3000/users/1/books/'+(this.props.book.id),
+      url: `http://localhost:3000/users/1/books/${this.props.book.id}`
       type: typeName,
       crossDomain: true,
       xhrFields: { withCredentials: true},
