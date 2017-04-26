@@ -23,12 +23,11 @@ class FriendList extends Component {
   }
   componentWillMount() {
     $.ajax({
-      url: 'http://localhost:3000/users/161/books',
+      url: `http://localhost:3000/users/${this.props.userId}/friends`,
       crossDomain: true,
       xhrFields: { withCredentials: true },
     }).done((response) => {
       console.log(response);
-      debugger;
     })
   }
   render() {
@@ -43,8 +42,8 @@ class Nerdmeter extends Component {
     return (
       <div id="nerdmeter">
         <div id="friend-list">
+          <p>Select a friend and we'll tell you how nerdy they are!</p>
           <FriendList userId={this.props.userId} />
-          <p>Hi, you're logged in</p>
         </div>
         <div id="results">
         </div>
