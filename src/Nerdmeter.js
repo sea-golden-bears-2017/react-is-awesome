@@ -3,7 +3,20 @@ import $ from 'jquery';
 import './App.css';
 
 class Results extends Component {
-
+  componentWillMount() {
+    $.ajax({
+      url: `http://localhost:3000/users/${this.props.friendObject.id}/books`,
+      crossDomain: true,
+      xhrFields: { withCredentials: true },
+    }).done((response) => {
+      console.log(response);
+    });
+  }
+  render() {
+    return(
+      <p>Your friend is really nerdy!</p>
+    )
+  }
 }
 
 class Friend extends Component {
@@ -35,7 +48,7 @@ class FriendList extends Component {
     });
   }
   handleClick(f){
-    console.log(f);
+    return this.props.onClick(f);
   }
   render() {
     return (
@@ -51,14 +64,24 @@ class FriendList extends Component {
 }
 
 class Nerdmeter extends Component {
+  constructor() {
+    super();
+    this.state = {
+      result: null,
+    };
+  }
+  handleClick(e) {
+    this.setState({result: e});
+  }
   render() {
     return (
       <div id="nerdmeter">
         <div id="friend-list">
           <p>Select a friend and we'll tell you how nerdy they are!</p>
-          <FriendList userId={this.props.userId} />
+          <FriendList userId={this.props.userId} onClick={(e) => this.handleClick(e)} />
         </div>
         <div id="results">
+          {(this.state.result !== null) ? <Results friendObject={this.state.result}  /> : <div></div> }
         </div>
       </div>
     )
