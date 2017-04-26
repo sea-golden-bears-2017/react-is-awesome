@@ -19,10 +19,14 @@ class PageContent extends Component {
     }
   }
 
+  handlePostLogin(){
+    
+  }
+
   handleClick(i){
-    const registrationForm = <RegistrationForm />;
-    const loginForm = <LogInForm />;
-    const homepage = <HomePage />;
+    const registrationForm = <RegistrationForm handlePostLogin={this.handlePostLogin}/>;
+    const loginForm = <LogInForm handlePostLogin={this.handlePostLogin}/>;
+    const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     let stateVariable = null;
 
     switch(i){
@@ -49,7 +53,7 @@ class PageContent extends Component {
     return (
       <div className="main-container">
         <NavBar onClick={(i) => this.handleClick(i)}/>
-        <MainContainer content={this.state.mainContainer.content}/>
+        <MainContainer content={this.state.mainContainer.content} handlePostLogin={this.handlePostLogin}/>
       </div>
     );
   }

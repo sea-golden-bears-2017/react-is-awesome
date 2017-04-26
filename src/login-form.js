@@ -40,6 +40,7 @@ class LogInForm extends Component {
     }).done(function(successfulSession){
       console.log(successfulSession);
     });
+    this.props.handlePostLogin();
     // Reset registration fields
     this.refs.loginName.value = '';
     this.refs.loginPassword.value = '';
