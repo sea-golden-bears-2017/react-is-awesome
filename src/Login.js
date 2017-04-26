@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import './App.css';
 import Nerdmeter from './Nerdmeter'
@@ -23,7 +22,7 @@ class Login extends Component {
       data: {user: this.state},
     }).done((response) => {
       // SEND SOMETHING TO APP CLASS
-      
+
     });
     }
   render() {

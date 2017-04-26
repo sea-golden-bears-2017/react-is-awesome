@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import './App.css';
 
@@ -24,7 +23,6 @@ class FriendList extends Component {
 }
 
 class Nerdmeter extends Component {
-  debugger;
   render() {
     return (
       <div id="nerdmeter">
