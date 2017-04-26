@@ -22,9 +22,9 @@ class BookContainer extends Component {
 
   render() {
     return (
-      <div className='bookContainer'>
+      <div className='container'>
         <h1>Boox List</h1>
-        <ul>{
+        <ul className='bookList'>{
             this.state.allBooks.map((book) => {
               return  <li key={book.id}><Book book={book} /></li>
             })
