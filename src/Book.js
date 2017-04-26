@@ -6,11 +6,9 @@ class Book extends Component {
   constructor() {
     super();
     this.deleteBook = this.deleteBook.bind(this);
-    this.showBook = this.showBook.bind(this);
+    this.popUpBook = this.popUpBook.bind(this);
   }
-  showBook() {
-    <BookItem book={this}/>
-  }
+
   deleteBook() {
     $.ajax({
       url: `http://localhost:3000/books/${this.props.book.id}/delete`,
@@ -20,10 +18,15 @@ class Book extends Component {
       xhrFields: { withCredentials: true},
     })
   }
+
+  popUpBook() {
+    this.props.showBook(this.props.book)
+  }
+
   render() {
     return (
       <div>
-        <button onClick={this.showBook} className='bookLink'>
+        <button onClick={this.popUpBook} className='bookLink'>
           {`${this.props.book.title} by ${this.props.book.author}`}
         </button>
         <button onClick={this.deleteBook} className='delete_btn'>
