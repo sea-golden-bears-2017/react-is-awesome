@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import $ from 'jquery';
 import './BookList.css';
+import Book from './Book'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class BookList extends Component {
@@ -32,8 +32,7 @@ class BookList extends Component {
     var rightList = this.state.books.slice(this.state.books.length/2, this.state.books.length);
     return (
       <div className = "BookList-container">
-
-        <div className = "list-left"><ul>{leftList.map((book) => { return <li><a href="/books/{book.id}">{book.title}</a></li> })}</ul></div>
+        <div className = "list-left"><ul>{leftList.map((book) => { return <li><Book book={book} mode = {'title'}/></li> })}</ul></div>
         <div className = "list-right"><ul>{rightList.map((book) => { return <li><a href="#">{book.title}</a></li> })} </ul></div>
       </div>
     );
