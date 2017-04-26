@@ -30,19 +30,7 @@ class Book extends Component {
     return (
       <div>
         <SkyLight hideOnOverLayClicked ref="simpleDialog" title="Hello">
-          <div className="book-pop">
-            <div className="Header"><h1>{this.props.book.title}</h1></div>
-            <div className="Content">
-              <h2>Author: {this.props.book.author}</h2>
-              <ul>
-                <li>Publisher: {this.props.book.publisher}</li>
-                <li>Genre: {this.props.book.genre}</li>
-              </ul>
-            </div>
-            <div className="user-add">
-              <span><button onClick={this.clickHandler}>{buttonName}</button></span>
-            </div>
-          </div>
+          <BookItem book={this.props.book} />
         </SkyLight>
         <button onClick={() => this.refs.simpleDialog.show()} className='bookLink'>
           {`${this.props.book.title} by ${this.props.book.author}`}

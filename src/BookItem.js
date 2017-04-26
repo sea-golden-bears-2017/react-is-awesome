@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import SkyLight from 'react-skylight';
 
 class BookItem extends Component {
 
