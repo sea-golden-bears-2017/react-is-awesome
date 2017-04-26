@@ -21,8 +21,7 @@ class Login extends Component {
       url: 'http://localhost:3000/sessions',
       data: {user: this.state},
     }).done((response) => {
-      // SEND SOMETHING TO APP CLASS
-
+      this.props.onNewSession("I'm in!")
     });
     }
   render() {

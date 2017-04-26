@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from './Login';
+import Nerdmeter from './Nerdmeter'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   constructor() {
     super();
-    this.state = { loggedIn: false };
+    this.state = {
+      mode: "login",
+     };
   }
-  isLoggedIn() {
-    if(this.state.loggedIn) {
-      <Nerdmeter />
-    } else {
-      <Login />
-    }
+  loggedIn(token) {
+    this.setState({ mode: token })
   }
   render() {
     return (
@@ -22,11 +21,7 @@ class App extends Component {
           <h1>Nerdmeter</h1>
         </div>
         <div id="content">
-          {if (this.state.loggedIn)}{/* IF NOT LOGGED IN, render Login, if so, render Nerdmeter. Set state in app to control this. */}
-          {else}
-          <Login />
-
-          {/* <Nerdmeter /> */}
+          {(this.state.mode === "login") ? <Login onNewSession={this.loggedIn.bind(this)}/> : <Nerdmeter />}
         </div>
       </div>
     );

@@ -26,6 +26,7 @@ class Nerdmeter extends Component {
   render() {
     return (
       <div id="nerdmeter">
+        <p>Hey!</p>
         <div id="friend-list">
           <FriendList />
         </div>
