@@ -16,12 +16,13 @@ class Login extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    let loginForm = this
     $.ajax({
       type: 'POST',
       url: 'http://localhost:3000/sessions',
       data: {user: this.state},
     }).done((response) => {
-      this.props.onNewSession("I'm in!")
+      loginForm.props.onNewSession(response.user_id);
     });
     }
   render() {

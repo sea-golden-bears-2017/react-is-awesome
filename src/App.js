@@ -8,11 +8,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      mode: "login",
-     };
+      mode: 'login',
+      userId: '',
+    };
   }
-  loggedIn(token) {
-    this.setState({ mode: token })
+  loggedIn(id) {
+    this.setState({ mode: 'logged', userId: id });
+    console.log(this.state)
   }
   render() {
     return (
@@ -21,7 +23,7 @@ class App extends Component {
           <h1>Nerdmeter</h1>
         </div>
         <div id="content">
-          {(this.state.mode === "login") ? <Login onNewSession={this.loggedIn.bind(this)}/> : <Nerdmeter />}
+          {(this.state.mode === 'login') ? <Login onNewSession={(k) => this.loggedIn(k)} /> : <Nerdmeter userId={this.state.userId} />}
         </div>
       </div>
     );
