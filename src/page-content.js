@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import MainContainer from './main-container.js';
 import NavBar from './navbar.js';
-import RegistrationForm from './registration-form.js';
-import LogInForm from './login-form.js';
-import HomePage from './homepage.js';
 import $ from 'jquery'
 
 class PageContent extends Component {
@@ -15,7 +12,7 @@ class PageContent extends Component {
         buttons: ['Register', 'Login', 'Home'],
       },
       mainContainer: {
-        content: <HomePage />,
+        content: "Home",
       },
       user: {
         userId: null,
@@ -23,13 +20,13 @@ class PageContent extends Component {
     }
   }
   handlePostLogin(loggedInUser){
-    const homepage = <HomePage />;
+
     this.setState( {
       navbar: {
         buttons: ['Logout', 'Home'],
       },
       mainContainer: {
-        content: homepage,
+        content: "Home",
       },
       user: {
         userId: loggedInUser.user_id,
@@ -38,10 +35,10 @@ class PageContent extends Component {
   }
 
   handleClick(i){
-    const registrationForm = <RegistrationForm handlePostLogin={(id) => this.handlePostLogin(id) } pageRef={this} />;
-    const loginForm = <LogInForm handlePostLogin={this.handlePostLogin} pageRef={this} />;
-    const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
-    let stateVariable = null;
+    // const registrationForm = <RegistrationForm handlePostLogin={(id) => this.handlePostLogin(id) } />;
+    // const loginForm = <LogInForm handlePostLogin={(id) => this.handlePostLogin(id) }  />;
+    // const homepage = <HomePage />;
+    // let stateVariable = null;
 
     if (i === "Logout"){
       $.ajax( {
@@ -55,7 +52,7 @@ class PageContent extends Component {
             buttons: ['Register', 'Login', 'Home'],
           },
           mainContainer: {
-            content: homepage,
+            content: i,
           },
           user: {
             userId: null,
@@ -64,33 +61,34 @@ class PageContent extends Component {
       })
     }
     else {
-      switch(i){
-        case "Register":
-          stateVariable = registrationForm;
-          break;
-        case "Login":
-          stateVariable = loginForm;
-          break;
-        case "Home":
-          stateVariable = homepage;
-          break;
-        default:
-          console.log("OMG errorz");
-          break;
-      }
+      // switch(i){
+      //   case "Register":
+      //     stateVariable = registrationForm;
+      //     break;
+      //   case "Login":
+      //     stateVariable = loginForm;
+      //     break;
+      //   case "Home":
+      //     stateVariable = homepage;
+      //     break;
+      //   default:
+      //     console.log("OMG errorz");
+      //     break;
+      // }
       this.setState( {
         mainContainer: {
-          content: stateVariable,
+          content: i,
         }
       })
     }
   }
   render() {
+
     return (
       <div className="main-container">
         <NavBar onClick={(i) => this.handleClick(i)} buttons={this.state.navbar.buttons}/>
         <div className="App-intro">
-          <MainContainer content={this.state.mainContainer.content} />
+          <MainContainer content={this.state.mainContainer.content} handlePostLogin={(id) => this.handlePostLogin(id)}/>
         </div>
       </div>
     );

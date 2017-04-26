@@ -50,8 +50,8 @@ class RegistrationForm extends Component {
         },
         crossDomain: true,
         xhrFields: { withCredentials: true }
-      }).done((successfulSession) => {
-        form.props.handlePostLogin(successfulSession);
+      }).done((user) => {
+        form.props.handlePostLogin(user);
       })
     })
     // Reset registration fields
