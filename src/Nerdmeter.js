@@ -7,9 +7,13 @@ class Results extends Component {
 }
 
 class Friend extends Component {
+  clickHandler(event) {
+    event.preventDefault();
+    return this.props.onClick(this.props.friendObject);
+  }
   render() {
     return(
-      <li><a href=""></a></li>
+      <a onClick={(e) => this.clickHandler(e)}>{this.props.friendObject.name}</a>
     )
   }
 }
@@ -19,7 +23,7 @@ class FriendList extends Component {
     super();
     this.state = {
       list: [],
-    }
+    };
   }
   componentWillMount() {
     $.ajax({
@@ -27,13 +31,22 @@ class FriendList extends Component {
       crossDomain: true,
       xhrFields: { withCredentials: true },
     }).done((response) => {
-      console.log(response);
-    })
+      this.setState({list: response});
+    });
+  }
+  handleClick(f){
+    console.log(f);
   }
   render() {
-    return(
-    <p>{this.state.list}</p>
-    )
+    return (
+      <div>
+        <p>You made it. You really do have friends. And they read!</p>
+        <ul>
+          {this.state.list.map((friend)=> {return(<li key={friend.id}><Friend friendObject={friend} onClick={(f) => this.handleClick(f) } /></li>)})}
+        </ul>
+      </div>
+      // <Friend />
+    );
   }
 }
 
