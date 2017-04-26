@@ -2,15 +2,24 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import './BookList.css';
 import Book from './Book'
+import GenreFilter from './GenreFilter'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class BookList extends Component {
   constructor() {
     super();
     this.clickHandler = this.clickHandler.bind(this);
+    this.updateBookList = this.updateBookList.bind(this);
     this.state = {
       books: [],
+      filteredBooks: [],
     };
+  }
+
+  updateBookList(filteredBooks) {
+    this.setState({
+      filteredBooks: filteredBooks,
+    });
   }
 
   clickHandler(e, book) {
@@ -30,15 +39,17 @@ class BookList extends Component {
       }).done((response) => {
         this.setState({
           books: response,
+          filteredBooks: response,
         });
       });
   }
 
   render() {
-    var leftList = this.state.books.slice(0, this.state.books.length/2);
-    var rightList = this.state.books.slice(this.state.books.length/2, this.state.books.length);
+    var leftList = this.state.filteredBooks.slice(0, this.state.filteredBooks.length/2);
+    var rightList = this.state.filteredBooks.slice(this.state.filteredBooks.length/2, this.state.filteredBooks.length);
     return (
       <div className = "BookList-container">
+        <GenreFilter updateBookList={this.updateBookList} bookArray={this.state.books} />
         <div className = "list-left">
           <ul>{leftList.map((book) => {
             const handler = (e) => {
