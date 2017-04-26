@@ -22,7 +22,7 @@ class PageContent extends Component {
       }
     }
   }
-  handlePostLogin(page, userId){
+  handlePostLogin(page, loggedInUser){
     const homepage = <HomePage handlePostLogin={this.handlePostLogin}/>;
     page.setState( {
       navbar: {
@@ -32,7 +32,7 @@ class PageContent extends Component {
         content: homepage,
       },
       user: {
-        userId: userId,
+        userId: loggedInUser.user_id,
       },
     })
   }

@@ -40,7 +40,6 @@ class LogInForm extends Component {
       crossDomain: true,
       xhrFields: { withCredentials: true }
     }).done((successfulSession) => {
-      console.log(successfulSession);
       form.props.handlePostLogin(this.props.pageRef, successfulSession);
     });
 
