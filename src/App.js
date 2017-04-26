@@ -13,6 +13,7 @@ class App extends Component {
           <h1>Nerdmeter</h1>
         </div>
         <div id="content">
+          {/* IF NOT LOGGED IN, render Login, if so, render Nerdmeter. Set state in app to control this. */}
           <Login />
           {/* <Nerdmeter /> */}
         </div>

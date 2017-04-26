@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import './App.css';
-
-class Nerdmeter extends Component {
-  render() {
-    return (
-      <p>Hello</p>
-    )
-  }
-}
+import Nerdmeter from './Nerdmeter'
 
 class Login extends Component {
   constructor(props) {
@@ -30,8 +23,7 @@ class Login extends Component {
       data: {user: this.state},
     }).done((response) => {
       // SEND SOMETHING TO APP CLASS
-      ReactDOM.render(<Nerdmeter />, document.getElementById("content"))
-      console.log("You are logged in, but what now?")
+      
     });
     }
   render() {
