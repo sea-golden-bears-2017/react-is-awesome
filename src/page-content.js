@@ -2,16 +2,28 @@ import React, { Component } from 'react';
 import './App.css';
 import MainContainer from './main-container.js';
 import NavBar from './navbar.js';
+import NavBarButton from './nav-bar-button.js';
 import RegistrationForm from './registration-form.js';
 import LogInForm from './login-form.js';
 import HomePage from './homepage.js';
 
 class PageContent extends Component {
+
+
   constructor(){
+    function initializeNavBar() {
+      return (
+          <nav>
+            <NavBarButton value="Register" onClick={() => this.props.onClick("Register")} />
+            <NavBarButton value="Login/Logout" onClick={() => this.props.onClick("Login/Logout")} />
+            <NavBarButton value="Home" onClick={() => this.props.onClick("Home")} />
+          </nav>
+      );
+    }
     super();
     this.state = {
       navbar: {
-        selected: null,
+        buttons: initializeNavBar(),
       },
       mainContainer: {
         content: null,
@@ -19,8 +31,16 @@ class PageContent extends Component {
     }
   }
 
+
+
   handlePostLogin(){
-    
+    // Change state of nav bar
+    // this.setState( {
+    //   navbar: {
+    //     buttons:
+    //   }
+    // })
+    // Navigate to the homepage
   }
 
   handleClick(i){
@@ -52,8 +72,8 @@ class PageContent extends Component {
   render() {
     return (
       <div className="main-container">
-        <NavBar onClick={(i) => this.handleClick(i)}/>
-        <MainContainer content={this.state.mainContainer.content} handlePostLogin={this.handlePostLogin}/>
+        <NavBar onClick={(i) => this.handleClick(i)} buttons={this.state.navbar.buttons} />
+        <MainContainer content={this.state.mainContainer.content} />
       </div>
     );
   }
