@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BookItem book={{ id: 6, title: "The Mermaids Singing", author: "Miss Lilyan McCullough", publisher: "SAGE Publications", genre: "Reference book" }} />
+        <BookItem book={{ id: 6, title: "The Mermaids Singing", author: "Miss Lilyan McCullough", publisher: "SAGE Publications", genre: "Reference book" }} ownsBook={true}/>
       </div>
     );
   }
