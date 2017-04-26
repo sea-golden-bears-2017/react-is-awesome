@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class BookItem extends Component {
 
@@ -9,6 +10,12 @@ class BookItem extends Component {
 
   clickHandler() {
     console.log("hello");
+    $.ajax({
+      url: 'http://localhost:3000/users/1/books/'+(this.props.book.id),
+      type: 'patch',
+      crossDomain: true,
+      xhrFields: { withCredentials: true},
+    }).done((response) => console.log(response))
   }
 
   render() {
