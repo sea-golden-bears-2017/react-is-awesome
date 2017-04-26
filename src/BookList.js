@@ -7,10 +7,16 @@ import Book from './Book'
 class BookList extends Component {
   constructor() {
     super();
+    this.clickHandler = this.clickHandler.bind(this);
     this.state = {
       books: [],
     };
   }
+
+  clickHandler(newBook) {
+    this.props.updateToBookMode('bookMode', newBook)
+  }
+
   componentDidMount() {
     this.makeBookList();
   }
@@ -32,8 +38,27 @@ class BookList extends Component {
     var rightList = this.state.books.slice(this.state.books.length/2, this.state.books.length);
     return (
       <div className = "BookList-container">
-        <div className = "list-left"><ul>{leftList.map((book) => { return <li><Book book={book} mode = {'title'}/></li> })}</ul></div>
-        <div className = "list-right"><ul>{rightList.map((book) => { return <li><a href="#">{book.title}</a></li> })} </ul></div>
+        <div className = "list-left">
+          <ul>{leftList.map((book) => {
+            const handler = () => {
+              this.clickHandler(book)
+            };
+            return (
+            <li key={book.id} ><a onClick={handler} href='#'><Book book={book} mode={'bookTitle'} />
+            </a></li>) })
+          }
+          </ul>
+        </div>
+        <div className = "list-right">
+          <ul>{rightList.map((book) => {
+            const handler = () => {
+              this.clickHandler(book)
+            };
+            return (
+            <li key={book.id} ><a onClick={handler} href='#'><Book book={book} mode={'bookTitle'}/>
+            </a></li> )})}
+          </ul>
+        </div>
       </div>
     );
   }

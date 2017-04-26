@@ -9,12 +9,21 @@ import Book from './Book'
 class App extends Component {
   constructor(){
     super();
+    this.updateToBookMode = this.updateToBookMode.bind(this);
     this.state = {
-      mode: 'bookMode'
+      mode: 'bookListMode',
+      book: null,
     };
   }
+
+  updateToBookMode(mode, book) {
+    this.setState({
+      mode: mode,
+      book: book,
+    })
+  }
+
   render() {
-    const book = {"id":1,"title":"Look Homeward, Angel","author":"Luigi Balistreri","publisher":"Hodder Headline","genre":"Mythology","created_at":"2017-04-21T23:12:15.051Z","updated_at":"2017-04-21T23:12:15.051Z"};
     return (
       <div className="App">
         <NavBar />
@@ -22,7 +31,7 @@ class App extends Component {
           <h1>MyShelf</h1>
         </div>
         {
-          (this.state.mode === 'bookMode') ?  <BookList /> : <Book book={book}/>
+          (this.state.mode === 'bookListMode') ?  <BookList updateToBookMode={this.updateToBookMode} /> : <Book book={this.state.book} mode={'bookShow'}/>
         }
       </div>
     );
