@@ -18,13 +18,23 @@ class Results extends Component {
       this.setState({ friendBooks: response });
     });
   }
+  componentWillReceiveProps() {
+    $.ajax({
+      url: `http://localhost:3000/users/${this.props.friendObject.id}/books`,
+      crossDomain: true,
+      xhrFields: { withCredentials: true },
+    }).done((response) => {
+      console.log("############")
+      this.setState({ friendBooks: response });
+    });
+  }
   calculateNerdiness() {
     const books = this.state.friendBooks;
     let nerdyBooks = 0;
     for(let i = 0; i < books.length; i++){
       if(books[i].genre === "Science fiction"){nerdyBooks++}
     }
-    return(100 * (nerdyBooks / books.length));
+    return((100 * (nerdyBooks / books.length)).toFixed(2));
   }
   render() {
     return(
@@ -42,7 +52,7 @@ class Friend extends Component {
   }
   render() {
     return(
-      <a onClick={(e) => this.clickHandler(e)}>{this.props.friendObject.name}</a>
+      <a id={this.props.friendObject.id} onClick={(e) => this.props.onClick(e)}>{this.props.friendObject.name}</a>
     )
   }
 }
@@ -63,8 +73,10 @@ class FriendList extends Component {
       this.setState({list: response});
     });
   }
-  handleClick(f){
-    return this.props.onClick(f);
+  handleClick(e){
+    e.preventDefault();
+    let friendObject = {name: e.target.innerHtml, id: e.target.id};
+    return this.props.onClick(friendObject);
   }
   render() {
     return (
@@ -96,6 +108,7 @@ class Nerdmeter extends Component {
           <p>Select a friend and we'll tell you how nerdy they are!</p>
           <FriendList userId={this.props.userId} onClick={(e) => this.handleClick(e)} />
         </div>
+        <p>{JSON.stringify(this.state.result)}</p>
         <div id="results">
           {(this.state.result !== null) ? <Results friendObject={this.state.result}  /> : <div></div> }
         </div>
