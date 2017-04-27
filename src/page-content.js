@@ -20,7 +20,6 @@ class PageContent extends Component {
     }
   }
   handlePostLogin(loggedInUser){
-
     this.setState( {
       navbar: {
         buttons: ['Logout', 'Home'],
@@ -35,11 +34,6 @@ class PageContent extends Component {
   }
 
   handleClick(i){
-    // const registrationForm = <RegistrationForm handlePostLogin={(id) => this.handlePostLogin(id) } />;
-    // const loginForm = <LogInForm handlePostLogin={(id) => this.handlePostLogin(id) }  />;
-    // const homepage = <HomePage />;
-    // let stateVariable = null;
-
     if (i === "Logout"){
       $.ajax( {
         url: 'http://localhost:3000/sessions/' + this.state.user.userId,
@@ -61,20 +55,6 @@ class PageContent extends Component {
       })
     }
     else {
-      // switch(i){
-      //   case "Register":
-      //     stateVariable = registrationForm;
-      //     break;
-      //   case "Login":
-      //     stateVariable = loginForm;
-      //     break;
-      //   case "Home":
-      //     stateVariable = homepage;
-      //     break;
-      //   default:
-      //     console.log("OMG errorz");
-      //     break;
-      // }
       this.setState( {
         mainContainer: {
           content: i,
@@ -83,7 +63,6 @@ class PageContent extends Component {
     }
   }
   render() {
-
     return (
       <div className="main-container">
         <NavBar onClick={(i) => this.handleClick(i)} buttons={this.state.navbar.buttons}/>
