@@ -48,7 +48,6 @@ class App extends Component {
   }
 
   render() {
-    {console.log(this.state.filterBooks)}
     return (
       <div className="App">
         <div className="App-header">
@@ -57,7 +56,7 @@ class App extends Component {
           <SortBy sortBooks={this.setSorter}/>
           <FilterBy filterBooks={this.setFilter}/>
         </div>
-        <BookList foundBooks={this.state.books} sortThing={this.state.sortBooks}/>
+        <BookList foundBooks={this.state.books} sortThing={this.state.sortBooks} filter={this.state.filterBooks}/>
       </div>
     );
   }

@@ -20,6 +20,19 @@ class BookList extends Component {
     return sorted;
   }
 
+  filteredBooks() {
+    const genreFilter = this.props.filter;
+
+    if (genreFilter === "None" || !genreFilter) {
+      return this.sortBooks();
+    }
+    const filterResult = this.sortBooks().filter(function(book) {
+      return book.genre === genreFilter;
+      })
+    return filterResult;
+    }
+
+
   render() {
     return (
       <div id="bookList">
@@ -31,7 +44,7 @@ class BookList extends Component {
             <th>Publisher</th>
           </tr>
           {
-        this.sortBooks().map((book) => {
+        this.filteredBooks().map((book) => {
         return (
           <tr>
             <td>{book.title}</td>
