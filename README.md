@@ -13,7 +13,7 @@ Work through the official [React tutorial](https://facebook.github.io/react/tuto
 <p>In this release you'll be building an app using api data from the React is Awesome Backend</p>
 
 #### To get started:
-1. Clone down the [backend](https://github.com/sea-chorus-frogs-2017/react-is-awesome-backend)
+1. Clone down the [backend](../../../react-is-awesome-backend)
 2. In the react-is-awesome-backend directory type:
 ```
 $ be bundle
@@ -33,7 +33,7 @@ $ curl localhost:3000/books/1
 ```
 ### Release 2: Wireframing/planning
 
-<p>In this you'll go read [the documentation](https://github.com/sea-chorus-frogs-2017/react-is-awesome-backend) for the backend provided and see what kind of app you can build.</p>
+<p>In this you'll go read [the documentation](../../../react-is-awesome-backend) for the backend provided and see what kind of app you can build.</p>
 <p>Current available endpoints pertain to users, books, and friends.</p>
 
 Some possible apps:
