@@ -48,12 +48,4 @@ Some possible apps:
 ### Release 3: Build your app!
 ** Good luck! **
 
-To connect to the backend, you have add a couple of keys to your .ajax calls:
-```
-  $.ajax({
-    ...
-    crossDomain: true,
-    xhrFields: { withCredentials: true },
-    ...
-  })
-```
+Talk to an instructor before modifying the backend.
