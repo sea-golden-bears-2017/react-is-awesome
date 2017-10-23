@@ -2,34 +2,24 @@
 ---
 Welcome to your first foray into the world of ReactJS!
 
-### Release 0
-
-Work through the official [React tutorial](https://facebook.github.io/react/tutorial/tutorial.html).
-
-*Note: do this in a different folder outside this repo.*
-
 ### Release 1: Setup
 
 <p>In this release you'll be building an app using api data from the React is Awesome Backend</p>
 
 #### To get started:
-1. Clone down the [backend](../../../react-is-awesome-backend)
-2. In the react-is-awesome-backend directory type:
-```
-$ be bundle
-$ be rake db:setup
-$ rails s
-```
+1. View the API at [backend](../../../react-is-awesome-backend)
+1. You can connect to the actual server running this API at https://react-is-awesome-backend.herokuapp.com
+
 
 <p>Once your server is running try the following command in your command line from the `/react-is-awesome` directory:</p>
 
 ```
-$ curl localhost:3000/books/1
+$ curl https://react-is-awesome-backend.herokuapp.com/books/1
 ```
 <p>If everything is working correctly your response should look similar to the following:</p>
 
 ```
-{"id":1,"title":"Look Homeward, Angel","author":"Luigi Balistreri","publisher":"Hodder Headline","genre":"Mythology","created_at":"2017-04-21T23:12:15.051Z","updated_at":"2017-04-21T23:12:15.051Z"}
+{"id":1,"title":"Shall not Perish","author":"Mr. Adonis Koch","publisher":"Mapin Publishing","genre":"Tall tale","created_at":"2017-10-23T16:26:52.653Z","updated_at":"2017-10-23T16:26:52.653Z"}
 ```
 ### Release 2: Wireframing/planning
 
