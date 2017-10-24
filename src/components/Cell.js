@@ -2,10 +2,20 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import '../board.css'
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Cell extends Component {
   constructor() {
     super();
     this.searchByGenre = this.searchByGenre.bind(this)
+    this.state = {
+      books: [],
+    }
+  }
+
+  getTitleAuthor(books) {
+    return books.map((book) => {
+      return {title: book.title, author: book.author}
+    })
   }
 
   searchByGenre(event) {
@@ -14,9 +24,10 @@ class Cell extends Component {
     $.ajax({
       url: `https://react-is-awesome-backend.herokuapp.com/books/search/${genre}`,
       }).done((response) => {
-      console.log(response);
+        console.log(this.getTitleAuthor(response))
     })
   }
+
   render() {
     return (
       <div className="Cell" id={this.props.genre} onClick={this.searchByGenre}>
