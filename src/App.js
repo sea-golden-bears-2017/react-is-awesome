@@ -10,6 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.searchByGenre = this.searchByGenre.bind(this)
+    this.clickOff = this.clickOff.bind(this)
     this.state = {
       currentUser: "Devin",
       books: [],
@@ -32,9 +33,13 @@ class App extends Component {
     })
   }
 
+  clickOff(event) {
+    this.setState({books: []})
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className="App" onClick={this.clickOff}>
         <Header title={this.state.currentUser} />
         <Board searchFunction={this.searchByGenre}/>
         <GenreList bookList={this.state.books}/>
