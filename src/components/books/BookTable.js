@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Content from './Content';
+import Book from './Book';
 
 
 
-class TableData extends Component {
+class BookTable extends Component {
   render() {
     return (
       <table>
@@ -13,11 +13,11 @@ class TableData extends Component {
           <th>Genre</th>
         </tr>
           { this.props.bookData.map((book) => {
-            return <Content book={book}/>
+            return <Book book={book}/>
             }) }
       </table>
     );
   }
 }
 
-export default TableData;
+export default BookTable;

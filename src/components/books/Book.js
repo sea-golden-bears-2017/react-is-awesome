@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-class Content extends Component {
+class Book extends Component {
   render() {
     let book = this.props.book;
-    
+
     return (
       <tr>
         <td>{book.title}</td>
@@ -14,4 +14,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default Book;

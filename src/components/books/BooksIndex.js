@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../Header';
-import TableData from './TableData';
+import BookTable from './BookTable';
 import $ from 'jquery';
 
 
@@ -27,7 +27,7 @@ class BookIndex extends Component {
     return (
       <div>
         <Header content='All Books' />
-        <TableData bookData={this.state.bookData}/>
+        <BookTable bookData={this.state.bookData}/>
       </div>
     )
   }
