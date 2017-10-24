@@ -24,7 +24,7 @@ class Cell extends Component {
     $.ajax({
       url: `https://react-is-awesome-backend.herokuapp.com/books/search/${genre}`,
       }).done((response) => {
-        console.log(this.getTitleAuthor(response))
+        this.setState({books: this.getTitleAuthor(response)})
     })
   }
 
