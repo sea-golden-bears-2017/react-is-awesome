@@ -4,22 +4,13 @@ import Book from './Book';
 // eslint-disable-next-line react/prefer-stateless-function
 class Section extends Component {
 
-  createBook(book) {
-    return `${book.title} by ${book.author}`
-  }
-
-  books() {
-    this.props.books.map((book) => { return this.createBook(book) })
-  }
-
   render() {
-
-
+    // const title = this.props.books[0].title
+    // const author = this.props.books[0].author
     return (
       <div>
-        <ul>
-          <Book name={book.name} author={book.author}/>
-        </ul>
+        {this.props.books.map((book) => <Book title={book.title} author={book.author}/>
+        )}
       </div>
     );
   }

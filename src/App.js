@@ -9,19 +9,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      books: [],
+      books: [{title: "The Longest Book",
+              author: "jsimoni42"},
+              {title: "The Shortest Book",
+              author: "libby-glo"}],
     }
   }
 
-  componentWillMount() {
-    $.ajax({
-      method: 'GET',
-      url: 'https://react-is-awesome-backend.herokuapp.com/books'
-    }).done((response) => {
-      this.setState({
-        books: response });
-    })
-  }
+  // componentWillMount() {
+  //   $.ajax({
+  //     method: 'GET',
+  //     url: 'https://react-is-awesome-backend.herokuapp.com/books'
+  //   }).done((response) => {
+  //     this.setState({
+  //       books: response });
+  //   })
+  // }
 
   render() {
     return (
