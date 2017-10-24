@@ -9,8 +9,10 @@ class Section extends Component {
   render() {
     return (
     <div class="section">
-      <h2>Bookshelf</h2>
-      {this.props.books.map(createBook)}
+      <h2>{this.props.header}</h2>
+      {this.props.children.map((child) => {
+        return <li>{child}</li>
+      })}
     </div>);
   }
 }
