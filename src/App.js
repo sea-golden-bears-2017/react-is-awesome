@@ -5,7 +5,7 @@ import BookIndex from './components/BooksIndex'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
-  render() {
+  render(){
     return (
       <div className="App">
         <BookIndex />
