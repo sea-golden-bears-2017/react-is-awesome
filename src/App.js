@@ -18,7 +18,7 @@ class App extends Component {
       url: 'https://react-is-awesome-backend.herokuapp.com/books'
     }).done((response) => {
       this.setState({
-        books: response });
+        books: response.slice(0,10) });
     })
   }
 
@@ -30,7 +30,10 @@ class App extends Component {
           <h1>Please Login</h1>
           <h2>Your book experience awaits</h2>
         </div>
-        <Section books={this.state.books} />
+        <div className="section-container">
+          <Section books={this.state.books} />
+          <Section books={this.state.books} />
+        </div>
       </div>
     );
   }

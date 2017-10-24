@@ -8,7 +8,7 @@ const createBook = ({title, author, id}) => {
 class Section extends Component {
   render() {
     return (
-    <div>
+    <div class="section">
       <h2>Bookshelf</h2>
       {this.props.books.map(createBook)}
     </div>);
