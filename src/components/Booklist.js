@@ -3,6 +3,9 @@ import $ from 'jquery';
 import '../board.css';
 import Book from './Book';
 
+
+// eslint-disable-next-line react/prefer-stateless-function
+
 class Booklist extends Component {
   constructor() {
     super();

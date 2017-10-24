@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       currentUser: 'Devin',
       bookList: [],
+      booksRead: [],
     };
   }
 
@@ -32,8 +33,9 @@ class App extends Component {
   }
 
   readBook(book) {
-    console.log("helloooo")
-    console.log(book)
+    const newBooks = this.state.booksRead.slice();
+    newBooks.push(book);
+    this.setState({ booksRead: newBooks });
   }
 
   displayBooklist() {
@@ -62,7 +64,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header title={this.state.currentUser} />
-        <Board search={this.searchByGenre} />
+        <Board search={this.searchByGenre} booksRead={this.state.booksRead} />
         {this.displayBooklist()}
       </div>
     );

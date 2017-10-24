@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import '../board.css';
 
+
+// eslint-disable-next-line react/prefer-stateless-function
+
 class Book extends Component {
   constructor() {
     super()
@@ -11,7 +14,7 @@ class Book extends Component {
   bookClicked() {
     this.props.readBook(this.props.book)
   }
-  
+
   render() {
     return (
       <li>

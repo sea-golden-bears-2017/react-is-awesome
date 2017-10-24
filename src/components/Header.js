@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// eslint-disable-next-line react/prefer-stateless-function
+
 class Header extends Component {
   render() {
     return (
