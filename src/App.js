@@ -4,6 +4,7 @@ import './App.css';
 import BookShelf from './components/BookShelf.js';
 import FriendShelf from './components/FriendShelf.js';
 import Login from './components/Login.js';
+import Profile from './components/Profile.js';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -14,12 +15,13 @@ class App extends Component {
       page: 'home',
       user_id: null,
       book_id: null,
+      token: null
     };
     this.login = this.login.bind(this);
   }
 
   login(response) {
-    this.setState({user_id: response.id});
+    this.setState({user_id: response.id, page: 'profile', token: response.token});
   }
 
   render() {
@@ -30,13 +32,7 @@ class App extends Component {
           <h1>Please Login</h1>
           <h2>Your book experience awaits</h2>
         </div>
-        {/* <div className="bookshelf-container">
-        <BookShelf />
-      </div>
-        <div className="friendshelf-container">
-        <FriendShelf />
-      </div> */}
-        <Login />
+        {this.state.token ? <Profile /> : <Login login={(resp) => this.login(resp)} />}
       </div>
     );
   }

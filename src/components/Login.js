@@ -23,7 +23,7 @@ class Login extends Component {
       url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
       data
     }).done((response) => {
-      login(response);
+      this.props.login(response);
     });
   }
 
