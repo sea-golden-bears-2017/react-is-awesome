@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import NavBar from './components/NavBar'
 import './App.css';
+import NavBar from './components/NavBar'
 import BookIndex from './components/books/BooksIndex'
-
+import Profile from './components/profile/Profile'
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      content: 'library'
+    }
+  }
+
   render(){
+    let chosenContent = {
+      'profile': <Profile />,
+      'library': <BookIndex />
+    }
+
     return (
       <div className="App">
         <div className="header">
-          <NavBar />
+          <NavBar
+            pageLoad={ (e) =>
+              this.setState({
+                content: e.target.id
+              })
+            }
+          />
         </div>
+
         <div className="mainContent">
-          <BookIndex />
+          {chosenContent[this.state.content]}
         </div>
       </div>
     );

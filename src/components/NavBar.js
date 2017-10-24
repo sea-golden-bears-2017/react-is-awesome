@@ -8,8 +8,8 @@ class NavBar extends Component {
         <h1>Its a Library!!</h1>
         <nav>
           <ul>
-            <li>Profile</li>
-            <li>Library</li>
+            <li onClick={this.props.pageLoad} id='profile'>Profile</li>
+            <li onClick={this.props.pageLoad} id='library'>Library</li>
           </ul>
         </nav>
       </header>
