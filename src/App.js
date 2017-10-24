@@ -2,19 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
-import Section from './components/Section';
-import Book from './components/Book';
 import NavBar from './components/NavBar';
-import Friend from './components/Friend';
+import Content from './containers/Content';
 // eslint-disable-next-line react/prefer-stateless-function
-
-const createBook = ({title, author, id}) => {
-  return <Book key={id} title={title} author={author} />
-}
-
-const createFriend = ({name, id}) => {
-  return <Friend key={id} name={name} />
-}
 
 class App extends Component {
   constructor() {
@@ -51,8 +41,7 @@ class App extends Component {
   }
 
   render() {
-    const books = this.state.books.map(createBook);
-    const friends = this.state.friends.map(createFriend);
+
     return (
       <div className="App">
         <div className="App-header">
@@ -61,10 +50,7 @@ class App extends Component {
           <h2>Your book experience awaits</h2>
         </div>
         <NavBar onClick={(event) => this.go(event)} />
-        <div className="section-container">
-          <Section key="bookshelf" header="Bookshelf">{books}</Section>
-          <Section key="friends" header="Friends">{friends}</Section>
-        </div>
+        <Content books={this.state.books} friends={this.state.friends} content={this.state.content} />
       </div>
     );
   }
