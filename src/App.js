@@ -4,6 +4,7 @@ import './App.css';
 import Board from './components/Board';
 import Header from './components/Header';
 import Booklist from './components/Booklist';
+import LoginBox from './components/LoginBox';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -12,11 +13,13 @@ class App extends Component {
     this.searchByGenre = this.searchByGenre.bind(this);
     this.displayBooklist = this.displayBooklist.bind(this);
     this.readBook = this.readBook.bind(this);
+    this.navClick = this.navClick.bind(this);
     this.book = null;
     this.state = {
       currentUser: 'Devin',
       bookList: [],
       booksRead: [],
+      loginBox: false,
     };
   }
 
@@ -45,6 +48,15 @@ class App extends Component {
       return null
     }
   }
+
+  navClick(event) {
+    const click = event.target.id;
+    if (click === 'login') {
+      this.setState({
+        loginBox: true,
+      });
+    }
+  }
   // componentDidMount() {
   //   $.ajax({
   //     url: "https://react-is-awesome-backend.herokuapp.com/sessions",
@@ -61,9 +73,15 @@ class App extends Component {
   // }
 
   render() {
+    let loginBox = null
+    if (this.state.loginBox === true) {
+      loginBox =  <LoginBox />;
+    }
+
     return (
       <div className="App">
-        <Header title={this.state.currentUser} />
+        <Header title={this.state.currentUser} navClick={this.navClick} />
+        {loginBox}
         <Board search={this.searchByGenre} booksRead={this.state.booksRead} />
         {this.displayBooklist()}
       </div>

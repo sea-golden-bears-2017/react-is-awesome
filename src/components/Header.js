@@ -7,6 +7,9 @@ class Header extends Component {
     return (
       <div className="Header">
         <h2>{this.props.title}</h2>
+        <ul className="nav">
+          <li onClick={this.props.navClick} id="login">Login</li>
+        </ul>
       </div>
     );
   }
