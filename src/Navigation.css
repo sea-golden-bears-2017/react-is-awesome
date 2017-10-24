@@ -1,0 +1,25 @@
+.inline-center {
+  color: #ffffff;
+  margin: 10px auto 0;
+  width: 80%;
+}
+
+.inline-center ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style: none;
+}
+
+.inline-center a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+.inline-center a:visited{
+  color: #ffffff;
+}
+
+.inline-center a:hover {
+  color: #b3e0ef;
+}

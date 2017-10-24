@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import Navigation from './containers/Navigation';
 import logo from './logo.svg';
 import './App.css';
 import './Header.css';
+import './Navigation.css';
+
 
 // eslint-disable-next-line react/prefer-stateless-function
 
@@ -14,6 +17,9 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
+        </div>
+        <div className="inline-center">
+          <Navigation />
         </div>
         <div className="header">
           <Header content="Welcome to the Miggsbrary" />
