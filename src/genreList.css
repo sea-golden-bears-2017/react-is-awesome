@@ -1,6 +1,13 @@
 .genre-list-container {
-  width: 50%;
+  width: 80%;
   margin: auto;
+}
+
+.genre-list {
+  height: auto;
+  margin: auto;
+  padding: 25px 5px 10px;
+  background-color: rgba(51, 51, 51, .5)
 }
 
 table {
