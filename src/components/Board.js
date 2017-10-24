@@ -11,7 +11,7 @@ class Board extends Component {
   }
 
   createCell(genre) {
-    return <Cell genre={genre} />
+    return <Cell genre={genre} search={this.props.search} />
   }
 
   render() {
