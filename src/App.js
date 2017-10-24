@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import BookIndex from './components/BooksIndex'
+import BookIndex from './components/books/BooksIndex'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
