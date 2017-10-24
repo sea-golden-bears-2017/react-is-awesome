@@ -3,26 +3,13 @@ import $ from 'jquery'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Book extends Component {
-  constructor() {
-    super();
-    this.state = {
-      bookData: [],
-    }
-  }
-
-  componentWillMount() {
-    $.ajax({
-      method: 'GET',
-      url: 'https://react-is-awesome-backend.herokuapp.com/books'
-    }).done((response) => {
-      this.setState({
-        bookData: response });
-    })
+  createBook(book) {
+    return `${book.title} by ${book.author}`
   }
 
   render() {
     return (
-      <div> Book</div>
+      <li>{createBook(book)}</li>
     );
   }
 }

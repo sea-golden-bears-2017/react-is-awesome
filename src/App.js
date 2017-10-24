@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Book from './components/Book.js';
+import $ from 'jquery';
+import Section from './components/Section.js';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      books: [],
+    }
+  }
+
+  componentWillMount() {
+    $.ajax({
+      method: 'GET',
+      url: 'https://react-is-awesome-backend.herokuapp.com/books'
+    }).done((response) => {
+      this.setState({
+        books: response });
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,7 +31,7 @@ class App extends Component {
           <h1>Please Login</h1>
           <h2>Your book experience awaits</h2>
         </div>
-        <Book />
+        <Section books={this.state.books} />
       </div>
     );
   }
