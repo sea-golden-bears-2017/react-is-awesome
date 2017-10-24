@@ -11,7 +11,12 @@ class Board extends Component {
   }
 
   createCell(genre) {
-    return <Cell genre={genre} search={this.props.search} />
+    const readBooksInGenre = this.props.booksRead.filter(book => book.genre === genre);
+    return (
+      <Cell genre={genre} search={this.props.search}>
+        {readBooksInGenre.map(book => <div>{book.title}</div>)}
+      </Cell>
+  );
   }
 
   render() {

@@ -10,12 +10,12 @@ class App extends Component {
   constructor() {
     super();
     this.searchByGenre = this.searchByGenre.bind(this);
-    this.displayBooklist = this.displayBooklist.bind(this);
     this.readBook = this.readBook.bind(this);
     this.book = null;
     this.state = {
       currentUser: 'Devin',
       bookList: [],
+      booksRead: [],
     };
   }
 
@@ -32,17 +32,14 @@ class App extends Component {
   }
 
   readBook(book) {
-    console.log("helloooo")
-    console.log(book)
+    const newBooks = this.state.booksRead.slice();
+    newBooks.push(book);
+
+    this.setState({
+      booksRead: newBooks,
+    });
   }
 
-  displayBooklist() {
-    if (this.state.bookList.length > 0) {
-      return <Booklist books={this.state.bookList} readBook={this.readBook} />;
-    } else {
-      return null
-    }
-  }
   // componentDidMount() {
   //   $.ajax({
   //     url: "https://react-is-awesome-backend.herokuapp.com/sessions",
@@ -59,11 +56,17 @@ class App extends Component {
   // }
 
   render() {
+    console.log(this.state.booksRead);
+    let bookList = null;
+    if (this.state.bookList.length) {
+      bookList = <Booklist books={this.state.bookList} readBook={this.readBook} />;
+    }
+
     return (
       <div className="App">
         <Header title={this.state.currentUser} />
-        <Board search={this.searchByGenre} />
-        {this.displayBooklist()}
+        <Board search={this.searchByGenre} booksRead={this.state.booksRead} />
+        {bookList}
       </div>
     );
   }
