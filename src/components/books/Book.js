@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class Book extends Component {
   render() {
     let book = this.props.book;
-
     return (
       <tr>
         <td>{book.title}</td>

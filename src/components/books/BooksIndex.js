@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../Header';
 import BookTable from './BookTable';
+import NavBar from '../NavBar'
 import $ from 'jquery';
 
 
@@ -26,6 +27,7 @@ class BookIndex extends Component {
   render(){
     return (
       <div>
+        <NavBar />
         <Header content='All Books' />
         <BookTable bookData={this.state.bookData}/>
       </div>
