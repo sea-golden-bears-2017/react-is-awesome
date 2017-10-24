@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class Login extends Component {
   constructor(props){
@@ -7,18 +8,31 @@ class Login extends Component {
                     username: "",
                     password: "",
                   }
-    this.onChange = this.onChange.bind(this)
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(e){
-
+    e.preventDefault();
+    const data = {user: {
+                    name: this.state.username,
+                    password: this.state.password,
+                  }}
+    $.ajax({
+      method: 'POST',
+      url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
+      data
+    }).done((response) => {
+      login(response);
+    });
   }
+
   onChange(e){
     const newThing = e.target.value;
     const type = e.target.name;
     if(type === 'username'){
       this.setState({username: newThing})
-    }else if(type === 'password'){
+    } else if(type === 'password'){
       this.setState({password: newThing})
     }
   }
