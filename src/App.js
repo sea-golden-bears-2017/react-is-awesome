@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import NavBar from './components/NavBar'
 import './App.css';
 import BookIndex from './components/books/BooksIndex'
 
@@ -8,7 +9,12 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <BookIndex />
+        <div className="header">
+          <NavBar />
+        </div>
+        <div className="mainContent">
+          <BookIndex />
+        </div>
       </div>
     );
   }
