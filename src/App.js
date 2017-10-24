@@ -3,6 +3,7 @@ import './App.css';
 import $ from 'jquery';
 import Board from './components/Board';
 import Header from './components/Header';
+import GenreList from './components/GenreList';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
       <div className="App">
         <Header title={this.state.currentUser} />
         <Board searchFunction={this.searchByGenre}/>
+        <GenreList bookList={this.state.books}/>
       </div>
     );
   }

@@ -8,7 +8,6 @@ const genres = ["Short story", "Realistic fiction", "Mystery", "Fantasy", "Essay
 class Board extends Component {
   constructor() {
     super();
-    // this.createCell = this.createCell.bind(this);
   }
 
   createCell(genre) {
