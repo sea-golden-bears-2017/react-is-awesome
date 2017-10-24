@@ -13,10 +13,8 @@ class NavBar extends Component {
           </ul>
         </nav>
       </header>
-
     )
   }
-
 }
 
 export default NavBar;

@@ -26,7 +26,7 @@ class BookIndex extends Component {
 
   render(){
     return (
-      <div>
+      <div >
         <NavBar />
         <Header content='All Books' />
         <BookTable bookData={this.state.bookData}/>

@@ -6,7 +6,7 @@ import Book from './Book';
 class BookTable extends Component {
   render() {
     return (
-      <table>
+      <table >
         <tr>
           <th>Title</th>
           <th>Author</th>
