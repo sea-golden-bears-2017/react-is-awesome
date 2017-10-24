@@ -4,17 +4,44 @@ import $ from 'jquery';
 
 
 class BookIndex extends Component {
+  constructor() {
+    super();
+    this.state = {
+      bookData: []
+    }
+  }
+
   componentDidMount() {
     $.ajax({
       url: 'https://react-is-awesome-backend.herokuapp.com/books/',
       method: 'GET'
     }).done((response) => {
-      console.log(response)
+      this.setState({
+        bookData: response
+      })
     })
   }
+  
   render(){
     return (
-      <Header content="All Books"/>
+      <div>
+        <Header content="All Books"/>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+          </tr>
+            { this.state.bookData.map((book) => {
+              return (
+              <tr>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+                <td>{book.genre}</td>
+              </tr> )
+              }) }
+        </table>
+      </div>
     )
   }
 }
