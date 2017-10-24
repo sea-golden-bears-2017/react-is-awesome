@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
-import Section from './components/Section.js';
-
+import Section from './components/Section';
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   constructor() {
