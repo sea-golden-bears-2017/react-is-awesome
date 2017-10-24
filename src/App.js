@@ -28,7 +28,6 @@ class App extends Component {
     $.ajax({
       url: `https://react-is-awesome-backend.herokuapp.com/books/search/${genre}`,
       }).done((response) => {
-        console.log(response)
         this.setState({books: this.getTitleAuthor(response)})
     })
   }
