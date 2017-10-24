@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header'
+import BookIndex from './components/BooksIndex'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header content={"All Books"} />
+        <BookIndex />
       </div>
     );
   }
