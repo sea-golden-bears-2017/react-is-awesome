@@ -12,7 +12,7 @@ class Board extends Component {
   }
 
   createCell(genre) {
-    return <Cell genre={genre} />
+    return <Cell genre={genre} onClick={this.props.searchFunction} />
   }
 
   render() {

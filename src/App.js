@@ -8,15 +8,35 @@ import Header from './components/Header';
 class App extends Component {
   constructor() {
     super();
+    this.searchByGenre = this.searchByGenre.bind(this)
     this.state = {
-      currentUser: "Devin"
+      currentUser: "Devin",
+      books: [],
     }
   }
+
+  getTitleAuthor(books) {
+    return books.map((book) => {
+      return {title: book.title, author: book.author}
+    })
+  }
+
+  searchByGenre(event) {
+    let genre = event.target.id
+    genre = genre.replace(/\s/, "%20")
+    $.ajax({
+      url: `https://react-is-awesome-backend.herokuapp.com/books/search/${genre}`,
+      }).done((response) => {
+        console.log(response)
+        this.setState({books: this.getTitleAuthor(response)})
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header title={this.state.currentUser} />
-        <Board />
+        <Board searchFunction={this.searchByGenre}/>
       </div>
     );
   }
