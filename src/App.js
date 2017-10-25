@@ -14,9 +14,10 @@ class App extends Component {
     this.displayBooklist = this.displayBooklist.bind(this);
     this.readBook = this.readBook.bind(this);
     this.navClick = this.navClick.bind(this);
+    this.setCurrentUser = this.setCurrentUser.bind(this);
     this.book = null;
     this.state = {
-      currentUser: 'Devin',
+      currentUser: 'Welcome!',
       bookList: [],
       booksRead: [],
       loginBox: false,
@@ -33,6 +34,12 @@ class App extends Component {
         bookList: response,
       });
     });
+  }
+
+  setCurrentUser(username) {
+    this.setState({
+      currentUser: username
+    })
   }
 
   readBook(book) {
@@ -75,7 +82,7 @@ class App extends Component {
   render() {
     let loginBox = null
     if (this.state.loginBox === true) {
-      loginBox =  <LoginBox />;
+      loginBox =  <LoginBox setUser={this.setCurrentUser}/>;
     }
 
     return (

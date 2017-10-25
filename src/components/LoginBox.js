@@ -29,21 +29,22 @@ class LoginBox extends Component {
   handleSubmit(event) {
     event.preventDefault();
     $.ajax({
-      url: "https://react-is-awesome-backend.herokuapp.com/sessions",
-      method: "POST",
+      url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
+      method: 'POST',
       data: {
         user: {
           name: this.state.name,
           password: this.state.password,
-        }
-      }
+        },
+      },
     }).done((response) => {
       if (response) {
-        alert(`${this.state.name} is logged in!`)
+        this.props.setUser(this.state.name)
+        alert(`${this.state.name} is logged in!`);
       }
     }).fail(() => {
-      alert('Invalid username or password')
-    })
+      alert('Invalid username or password');
+    });
   }
 
   render() {
