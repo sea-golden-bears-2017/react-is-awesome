@@ -15,12 +15,16 @@ class App extends Component {
     this.readBook = this.readBook.bind(this);
     this.navClick = this.navClick.bind(this);
     this.setCurrentUser = this.setCurrentUser.bind(this);
+    this.getUsersBooks = this.getUsersBooks.bind(this);
     this.book = null;
     this.state = {
-      currentUser: 'Welcome!',
+      currentUserName: 'Welcome!',
+      currentUserId: null,
+      currentUserToken: null,
       bookList: [],
       booksRead: [],
       loginBox: false,
+
     };
   }
 
@@ -36,16 +40,42 @@ class App extends Component {
     });
   }
 
-  setCurrentUser(username) {
+  setCurrentUser(username, id, token) {
+    console.log(username)
+    console.log(id)
+    console.log(token)
     this.setState({
-      currentUser: username
-    })
+      currentUserName: username,
+      currentUserId: id,
+      currentUserToken: token,
+    });
+    this.getUsersBooks();
   }
+
+  getUsersBooks() {
+    $.ajax({
+      url: `https://react-is-awesome-backend.herokuapp.com/users/${this.state.currentUserId}/books`,
+      method: 'GET',
+      data: {token: `${this.state.currentUserToken}\\n`},
+    }).done((response) => {
+      this.setState({
+        booksRead: response
+      })
+    });
+  }
+
 
   readBook(book) {
     const newBooks = this.state.booksRead.slice();
     newBooks.push(book);
     this.setState({ booksRead: newBooks });
+    $.ajax({
+      url: `https://react-is-awesome-backend.herokuapp.com/users/${this.state.currentUserId}/books/${book.id}`,
+      method: 'PUT',
+      data: {
+        token: `${this.state.currentUserToken}\\n`
+      },
+    });
   }
 
   displayBooklist() {
@@ -87,7 +117,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header title={this.state.currentUser} navClick={this.navClick} />
+        <Header title={this.state.currentUserName} navClick={this.navClick} />
         {loginBox}
         <Board search={this.searchByGenre} booksRead={this.state.booksRead} />
         {this.displayBooklist()}

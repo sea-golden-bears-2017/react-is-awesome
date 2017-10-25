@@ -39,7 +39,8 @@ class LoginBox extends Component {
       },
     }).done((response) => {
       if (response) {
-        this.props.setUser(this.state.name)
+        console.log(response)
+        this.props.setUser(this.state.name, response.user_id, response.token)
         alert(`${this.state.name} is logged in!`);
       }
     }).fail(() => {
