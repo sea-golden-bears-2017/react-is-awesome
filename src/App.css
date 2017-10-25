@@ -53,6 +53,17 @@ ul {
   font-size: large;
 }
 
+.about-footer {
+  position: fixed;
+  bottom: 0;
+  border: thin black solid;
+  background: lime;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

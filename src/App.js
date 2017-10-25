@@ -19,7 +19,7 @@ class App extends Component {
     //   token: eyJ0b2tlbiI6MTYxfQ==\n
     // };
     this.state = {
-      page: 'profile',
+      page: 'about',
       user_id: 161,
       book_id: null,
       token: "eyJ0b2tlbiI6MTYxfQ==\n",
