@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login.js';
 import Profile from './components/Profile.js';
+import NavBar from './components/NavBar'
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -36,10 +37,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Please Login</h1>
-          <h2>Your book experience awaits</h2>
+        <div>
+            <NavBar />
         </div>
         {this.state.token ? <Profile user={this.state}/> : <Login login={this.login} />}
       </div>
