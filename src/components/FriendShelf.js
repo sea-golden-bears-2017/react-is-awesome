@@ -7,17 +7,32 @@ class FriendShelf extends Component {
     super();
     this.state = {
       friends: [],
+      generalPopulation: false,
     }
+    // Bind getUserFriends and getAllFriends
   }
 
-  componentWillMount() {
+  getUserFriends() {
     $.ajax({
       method: "GET",
       url: `https://react-is-awesome-backend.herokuapp.com/users/${this.props.user.user_id}/friends`,
       data: {token: this.props.user.token}
     }).done((response) => {
-      this.setState({ friends: response })
+      this.setState({ friends: response, generalPopulation: false })
+    });
+  }
+
+  getAllFriends() {
+    $.ajax({
+      method: "GET",
+      url: 'https://react-is-awesome-backend.herokuapp.com/users',
+      data: {token: this.props.user.token}
+    }).done((response) => {
+      this.setState({ friends: response, generalPopulation: true })
     })
+  }
+  componentWillMount() {
+    this.getUserFriends();
   }
   render() {
 
