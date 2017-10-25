@@ -10,9 +10,13 @@ class BookList extends Component {
     };
   }
 
+  displayBook(book) {
+    return `${book.title} written by ${book.author}`
+  }
+
   componentDidMount() {
     console.log('it mounted');
-    const url = 'https://react-is-awesome-backend.herokuapp.com/books/1'
+    const url = 'https://react-is-awesome-backend.herokuapp.com/books'
     $.ajax({
       url,
       method: 'GET',
@@ -26,7 +30,7 @@ class BookList extends Component {
   render() {
     return (
       <div className="BookList">
-        {this.state.books.author}
+        {this.state.books.map(book => this.displayBook(book))}
       </div>
     );
   }
