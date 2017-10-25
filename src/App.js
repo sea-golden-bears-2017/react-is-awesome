@@ -13,7 +13,11 @@ class App extends Component {
       books: [],
       friends: [],
       current: 'login',
+      token: '',
+      name: '',
+      user_id: '',
     }
+    this.handleUserLogin = this.handleUserLogin.bind(this);
   }
 
   componentWillMount() {
@@ -40,8 +44,14 @@ class App extends Component {
     })
   }
 
-  render() {
+  handleUserLogin({token, name, user_id}) {
+    this.setState({name: name,
+                   user_id: user_id,
+                   token: token,
+                 });
+  }
 
+  render() {
     return (
       <div className="App">
         <div className="App-header">
@@ -49,8 +59,8 @@ class App extends Component {
           <h1>BookConnect</h1>
           <h2>See what your friends are reading!</h2>
         </div>
-        <NavBar onClick={(event) => this.go(event)} />
-        <Content books={this.state.books} friends={this.state.friends} current={this.state.current} />
+        <NavBar onClick={(event) => this.go(event)} username={this.state.username} />
+        <Content books={this.state.books} friends={this.state.friends} current={this.state.current} name={this.state.name} handleUserLogin={this.handleUserLogin}/>
       </div>
     );
   }

@@ -14,7 +14,6 @@ class Login extends Component {
   }
 
   onChange(event) {
-    event.preventDefault();
     if (event.target.name === 'username') {
       this.setState({
         name: event.target.value
@@ -25,7 +24,6 @@ class Login extends Component {
         password: event.target.value
       })
     }
-
   }
 
   onSubmit(event) {
@@ -40,7 +38,11 @@ class Login extends Component {
         },
       }
     }).done((response) => {
-      console.log(response)
+      const token = response.token
+      const name = this.state.name
+      const user_id = response.user_id
+      this.props.nameHandOff({token, name, user_id});
+      $('form').trigger('reset');
     }).fail(() => {
       alert("Invalid combination of username/password.")
     });
