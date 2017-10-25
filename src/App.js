@@ -19,7 +19,7 @@ class App extends Component {
     //   token: eyJ0b2tlbiI6MTYxfQ==\n
     // };
     this.state = {
-      page: 'about',
+      page: 'home',
       user_id: 161,
       book_id: null,
       token: "eyJ0b2tlbiI6MTYxfQ==\n",
@@ -42,7 +42,7 @@ class App extends Component {
 
   render() {
     const pages = {
-                    'home': <Home />,
+                    'home': <Home user={this.state}/>,
                     'profile': <Profile user={this.state} />,
                     'about': <About />,
                   }

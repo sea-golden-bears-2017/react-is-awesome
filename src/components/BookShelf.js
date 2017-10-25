@@ -4,11 +4,12 @@ import Book from './Book';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class BookShelf extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const library = props.library;
     this.state = {
       books: [],
-      library: false,
+      library: library,
     }
   }
 
@@ -44,7 +45,7 @@ class BookShelf extends Component {
   }
 
   componentWillMount() {
-    this.getUserBooks();
+    this.state.library ? this.getAllBooks() : this.getUserBooks();
   }
 
   showBook(book) {
