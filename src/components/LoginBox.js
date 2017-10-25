@@ -38,7 +38,9 @@ handleSubmit(event) {
     },
   }).done((response) => {
     this.props.login({name: this.state.name, id: response.user_id, token: response.token})
-  });
+  }).fail((response) => {
+    alert('Invalid Username or Password')
+  })
 }
 
   render() {

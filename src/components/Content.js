@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import LoginBox from './LoginBox'
+import ActivityLog from './ActivityLog'
 
 class Content extends Component {
-  constructor() {
-    super();
-    this.state = {
-      content: 'loginbox',
-    };
-  }
+
   render() {
-    return (
-      <div className="container">
-        <LoginBox login={this.props.login} />
-      </div>
-    );
+    if (this.props.page === 'loginbox') {
+      return (
+        <div className="container">
+          <LoginBox login={this.props.login} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="container">
+          <ActivityLog />
+        </div>
+      );
+    }
   }
 }
 

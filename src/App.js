@@ -9,12 +9,14 @@ class App extends Component {
   constructor() {
     super();
     this.login = this.login.bind(this);
+    this.switchPage = this.switchPage.bind(this);
     this.state = {
       user: {
         name: null,
         id: null,
         token: null,
       },
+      content: 'loginbox',
     };
   }
 
@@ -26,14 +28,20 @@ class App extends Component {
         token,
       },
     });
+    this.switchPage('activityLog');
+  }
+
+  switchPage(page) {
+    this.setState({
+      content: page,
+    });
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <SearchBar />
-        <Content login={this.login} />
+        <Content login={this.login} page={this.state.content} />
         <NavBar />
       </div>
     );
