@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       books: [],
       friends: [],
-      current: "home",
+      current: 'login',
     }
   }
 
@@ -36,7 +36,7 @@ class App extends Component {
 
   go(event) {
     this.setState({
-      content: event.target.id
+      current: event.target.id
     })
   }
 
@@ -46,11 +46,11 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>Please Login</h1>
-          <h2>Your book experience awaits</h2>
+          <h1>BookConnect</h1>
+          <h2>See what your friends are reading!</h2>
         </div>
         <NavBar onClick={(event) => this.go(event)} />
-        <Content books={this.state.books} friends={this.state.friends} content={this.state.content} />
+        <Content books={this.state.books} friends={this.state.friends} current={this.state.current} />
       </div>
     );
   }
