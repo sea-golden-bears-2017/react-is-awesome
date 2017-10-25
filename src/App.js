@@ -11,11 +11,18 @@ class App extends Component {
   constructor(props){
     super(props);
     // TODO: Come back 2 dis
+    // this.state = {
+    //   page: 'home',
+    //   user_id: null,
+    //   book_id: null,
+    //   token: eyJ0b2tlbiI6MTYxfQ==\n
+    // };
     this.state = {
-      page: 'home',
-      user_id: null,
+      page: 'profile',
+      user_id: 161,
       book_id: null,
-      token: null
+      token: "eyJ0b2tlbiI6MTYxfQ==\n",
+      username: "krystal"
     };
     this.login = this.login.bind(this);
   }
@@ -27,7 +34,7 @@ class App extends Component {
                     username: username,
                 });
   }
-
+  
   render() {
     return (
       <div className="App">

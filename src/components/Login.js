@@ -25,6 +25,8 @@ class Login extends Component {
       url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
       data
     }).done((response) => {
+      console.log(response);
+      console.log(this.state.username);
       this.props.login(response, this.state.username);
     });
   }
