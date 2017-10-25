@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import BookList from './components/BookList';
 import Navigation from './containers/Navigation';
 import logo from './logo.svg';
 import './App.css';
@@ -26,6 +27,9 @@ class App extends Component {
         </div>
         <div className="subHeader">
           <Header content="Check Out These Books!" />
+        </div>
+        <div className="booklist">
+          <BookList books={this.state}/>
         </div>
       </div>
     );
