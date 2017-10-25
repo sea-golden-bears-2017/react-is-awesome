@@ -10,6 +10,8 @@ class BookShelf extends Component {
       books: [],
       library: false,
     }
+    // Do not Bind getBooks Functions as they are defined and used
+    // in the bookShelf component only.
   }
 
   getAllBooks(){
@@ -38,7 +40,6 @@ class BookShelf extends Component {
       url: `https://react-is-awesome-backend.herokuapp.com/users/${this.props.user.user_id}/books/${book_id}`,
       data: { token: this.props.user.token }
     }).done((response) => {
-      console.log(response)
       this.getUserBooks()
     })
   }
@@ -51,7 +52,7 @@ class BookShelf extends Component {
     if (this.state.library) {
       return (
         <div>
-          <Book author={book.author} title={book.title} />
+          <Book key={this.state.books.indexOf(book)} author={book.author} title={book.title} />
           <button onClick={() => this.readBook(book.id)}>README</button>
         </div>
       );
@@ -59,7 +60,7 @@ class BookShelf extends Component {
 
     return (
       <div>
-        <Book author={book.author} title={book.title} />
+        <Book key={this.state.books.indexOf(book)} author={book.author} title={book.title} />
       </div>
     );
   }
