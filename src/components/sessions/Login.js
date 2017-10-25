@@ -14,19 +14,11 @@ class Login extends Component {
   }
 
   handleName(e){
-    this.setState({
-      name: e.target.value
-    }, () => {
-      this.props.user.name = this.state.name
-    });
+    this.setState({name: e.target.value})
   }
 
   handlePassword(e){
-    this.setState({
-      password: e.target.value
-    }, () => {
-      this.props.user.password = this.state.password
-    });
+    this.setState({password: e.target.value})
   }
 
   handleSubmit(e){
@@ -35,7 +27,7 @@ class Login extends Component {
     $.ajax({
       method: 'POST',
       url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
-      data: {user: this.props.user }
+      data: {user: {name: this.state.name, password: this.state.password}}
     }).done((response)=>{
       console.log(response)
       debugger
@@ -58,4 +50,5 @@ class Login extends Component {
     )
   }
 }
+
 export default Login
