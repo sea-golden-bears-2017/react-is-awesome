@@ -45,6 +45,10 @@ ul {
   font-weight: bold;
 }
 
+.App-header li:hover{
+  cursor: pointer;
+}
+
 .App-intro {
   font-size: large;
 }

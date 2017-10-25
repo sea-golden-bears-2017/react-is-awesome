@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login.js';
 import Profile from './components/Profile.js';
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar';
+import Home from './components/Home';
+import About from './components/About';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
@@ -34,13 +36,23 @@ class App extends Component {
                 });
   }
 
+  navigation(id){
+    this.setState({page: id});
+  }
+
   render() {
+    const pages = {
+                    'home': <Home />,
+                    'profile': <Profile user={this.state} />,
+                    'about': <About />,
+                  }
+
     return (
       <div className="App">
         <div>
-            <NavBar />
+            <NavBar contentLoad={(e) => this.navigation(e.target.id)} />
         </div>
-        {this.state.token ? <Profile user={this.state}/> : <Login login={this.login} />}
+        {this.state.token ? pages[this.state.page] : <Login login={this.login} />}
       </div>
     );
   }

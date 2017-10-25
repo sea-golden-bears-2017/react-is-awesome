@@ -5,11 +5,11 @@ class NavBar extends Component {
   render(){
     return(
       <div className="App-header">
-        <h2>Booknook!!</h2>  
+        <h2>Booknook!!</h2>
         <ul>
-          <li>Home</li>
-          <li>Profile</li>
-          <li>About</li>
+          <li id='home' onClick={this.props.contentLoad}>Home</li>
+          <li id='profile' onClick={this.props.contentLoad}>Profile</li>
+          <li id='about' onClick={this.props.contentLoad}>About</li>
         </ul>
       </div>
     )
