@@ -11,6 +11,12 @@ class Content extends Component {
           <LoginBox login={this.props.login} />
         </div>
       );
+    } else if (this.props.page === 'addfriends'){
+      return (
+        <div className="container">
+          <AddFriends/>
+        </div>
+      );
     } else {
       return (
         <div className="container">
