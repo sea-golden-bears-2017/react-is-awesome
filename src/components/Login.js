@@ -30,12 +30,14 @@ class Login extends Component {
   }
 
   onChange(e){
-    const newThing = e.target.value;
-    const type = e.target.name;
-    if(type === 'username'){
-      this.setState({username: newThing})
-    } else if(type === 'password'){
-      this.setState({password: newThing})
+    // The .value function refers to the contents of respective inputs
+    // and not the value attribute on the input html tag.
+    const value = e.target.value;
+    const name = e.target.name;
+    if(name === 'username'){
+      this.setState({username: value})
+    } else if(name === 'password'){
+      this.setState({password: value})
     }
   }
 
@@ -44,6 +46,8 @@ class Login extends Component {
       <div>
         <h1>Login-io</h1>
         <form onSubmit={this.onSubmit}>
+          {/* Input responsible for changing state based on contents */}
+          {/* Please see onChange instance function */}
           <input onChange={this.onChange} type="text" placeholder="username" name="username" value={this.state.username} />
           <input onChange={this.onChange} type="password" placeholder="password" name="password" value={this.state.password} />
           <input type="submit" />
