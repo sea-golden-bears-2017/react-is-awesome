@@ -8,7 +8,7 @@ class Login extends Component {
     super();
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      username: '',
+      name: '',
       password: '',
     };
   }
@@ -17,25 +17,33 @@ class Login extends Component {
     event.preventDefault();
     if (event.target.name === 'username') {
       this.setState({
-        username: event.target.value
+        name: event.target.value
       })
+
     } else if (event.target.name === 'password') {
       this.setState({
         password: event.target.value
       })
     }
+
   }
 
   onSubmit(event) {
     event.preventDefault();
     $.ajax({
       method: 'POST',
-      url: 'https://react-is-awesome-backend.herokuapp.com/users/sessions',
-      username: this.state.username,
-      password: this.state.password
-    }).done((response => {
+      url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
+      data: {
+        user: {
+          name: this.state.name,
+          password: this.state.password
+        },
+      }
+    }).done((response) => {
       console.log(response)
-    }))
+    }).fail(() => {
+      alert("Invalid combination of username/password.")
+    });
   }
 
   render() {
