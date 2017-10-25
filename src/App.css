@@ -1,15 +1,34 @@
+:root {
+  --grey: #495159;
+  --sea-foam: #A1E8CC;
+  --columbia: #C5DECD;
+  --dust: #E5D4C0;
+  --apricot: #FAC9B8;
+}
+
+
 .App {
   text-align: center;
   max-width: 375px;
+  height: 666px;
   border: red solid 1px;
+  color: var(--grey);
+  background-color: var(--sea-foam);
 }
 
 .SearchBar {
   border: blue dotted 1px;
+  height: 15%;
 }
 
 .Content {
   border: yellow dashed 1px;
+  min-height: 55%;
+}
+
+.NavBar {
+  min-height: 15%;
+  border: orange solid 1px;
 }
 
 .NavBar div {
