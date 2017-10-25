@@ -1,41 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
-import BookIndex from './components/books/BooksIndex'
-import Profile from './components/profile/Profile'
 import Login from './components/sessions/Login'
+import AfterLogin from './components/AfterLogin'
 
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   constructor() {
     super();
+
     this.state = {
-      content: 'library'
+      content: 'login'
     }
+
+    this.loginLoad = this.loginLoad.bind(this)
+  }
+
+  loginLoad() {
+    this.setState({
+      content: 'after-login'
+    })
   }
 
   render(){
     let chosenContent = {
-      'profile': <Profile />,
-      'library': <BookIndex />
+      'after-login': <AfterLogin />,
+      'login': <Login loginLoad={this.loginLoad} />
     }
 
     return (
-      <div className="App">
-        <div className="header">
-          <NavBar
-            pageLoad={ (e) =>
-              this.setState({
-                content: e.target.id
-              })
-            }
-          />
-        </div>
-        <Login />
-        <div className="mainContent">
-          {chosenContent[this.state.content]}
-        </div>
+      <div className='App'>
+        {chosenContent[this.state.content]}
       </div>
     );
   }
