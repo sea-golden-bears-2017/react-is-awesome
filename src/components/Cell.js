@@ -14,7 +14,7 @@ class Cell extends Component {
     return (
       <div className="Cell" id={this.props.genre} onClick={this.props.search} role="button" tabIndex="0">
         <p>{this.props.genre}</p>
-      <p>{this.props.theBook}</p>
+        <p>{this.props.theBook}</p>
       </div>
     );
   }

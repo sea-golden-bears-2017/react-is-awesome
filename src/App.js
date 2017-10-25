@@ -24,7 +24,6 @@ class App extends Component {
       bookList: [],
       booksRead: [],
       loginBox: false,
-
     };
   }
 
@@ -41,9 +40,6 @@ class App extends Component {
   }
 
   setCurrentUser(username, id, token) {
-    console.log(username)
-    console.log(id)
-    console.log(token)
     this.setState({
       currentUserName: username,
       currentUserId: id,
