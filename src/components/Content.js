@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginBox from './LoginBox'
 import ActivityLog from './ActivityLog'
+import AddFriends from './AddFriends'
 
 class Content extends Component {
 
@@ -14,7 +15,7 @@ class Content extends Component {
     } else if (this.props.page === 'addfriends'){
       return (
         <div className="container">
-          <AddFriends/>
+          <AddFriends />
         </div>
       );
     } else {

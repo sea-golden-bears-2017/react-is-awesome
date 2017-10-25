@@ -77,8 +77,8 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar />
-        <Content login={this.login} page={this.state.content} />
-        <NavBar />
+        <Content login={this.login} page={this.state.content} onAddFriends={this.makeFriends} />
+        <NavBar onIconClick={this.switchPage} />
       </div>
     );
   }
