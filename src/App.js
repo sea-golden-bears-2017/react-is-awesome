@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import NavBar from './components/NavBar';
+import Header from './components/Header';
 import Content from './containers/Content';
 // eslint-disable-next-line react/prefer-stateless-function
 
@@ -44,21 +45,19 @@ class App extends Component {
     })
   }
 
-  handleUserLogin({token, name, user_id}) {
+  handleUserLogin({token, name, user_id, current}) {
     this.setState({name: name,
                    user_id: user_id,
                    token: token,
+                   current: current,
                  });
   }
+
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>BookConnect</h1>
-          <h2>See what your friends are reading!</h2>
-        </div>
+        <Header name={this.state.name} />
         <NavBar onClick={(event) => this.go(event)} username={this.state.username} />
         <Content books={this.state.books} friends={this.state.friends} current={this.state.current} name={this.state.name} handleUserLogin={this.handleUserLogin}/>
       </div>

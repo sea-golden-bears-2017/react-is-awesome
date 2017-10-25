@@ -41,7 +41,8 @@ class Login extends Component {
       const token = response.token
       const name = this.state.name
       const user_id = response.user_id
-      this.props.nameHandOff({token, name, user_id});
+      const current = 'home'
+      this.props.nameHandOff({token, name, user_id, current});
       $('form').trigger('reset');
     }).fail(() => {
       alert("Invalid combination of username/password.")

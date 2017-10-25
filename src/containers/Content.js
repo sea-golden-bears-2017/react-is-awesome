@@ -9,12 +9,12 @@ class Content extends Component {
     this.nameHandOff = this.nameHandOff.bind(this);
   }
 
-  nameHandOff({token, name, user_id}) {
-    this.props.handleUserLogin({token, name, user_id});
+  nameHandOff({token, name, user_id, current}) {
+    this.props.handleUserLogin({token, name, user_id, current});
   }
 
   renderContent() {
-    if (this.props.current === 'login') {
+    if (this.props.current === 'login' && this.props.name === '') {
       return(<div><Login name={this.props.name} nameHandOff={this.nameHandOff}/></div>)
     } else if (this.props.current === 'home') {
       return(<div><UserPage books={this.props.books} friends={this.props.friends}/></div>)
