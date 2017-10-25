@@ -7,7 +7,7 @@ class GenreList extends Component {
   render() {
     return (
       <div className="genre-list-container">
-        <ListItem bookList={this.props.bookList}/>
+        <ListItem bookList={this.props.bookList} addRead={this.props.addRead}/>
       </div>
     );
   }

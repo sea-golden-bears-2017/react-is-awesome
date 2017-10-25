@@ -7,17 +7,21 @@ class ListItem extends Component {
   createList(bookList) {
   return(
       <table>
+        <tbody>
           <tr>
             <td className="table-header">Title</td>
             <td className="table-header">Author</td>
+            <td className="table-header"></td>
           </tr>
     {bookList.map((book) => {
       return (<tr>
                 <td className="title">{book.title}</td>
                 <td>{book.author}</td>
+                <td><button id={book.title} onClick={this.props.addRead}>I've Read</button></td>
               </tr>
               )
             })}
+          </tbody>
       </table> )
   }
 
