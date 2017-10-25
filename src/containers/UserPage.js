@@ -23,16 +23,18 @@ class UserPage extends Component {
   }
 
   componentDidMount() {
+
     $.ajax({
       method: 'GET',
-      url: `https://react-is-awesome-backend.herokuapp.com/users/${this.props.user_id}/friends`,
+      url: `https://react-is-awesome-backend.herokuapp.com/users/${this.props.userId}/friends`,
       data: {token: this.props.token}
     }).done((response) => {
-      this.setState({
-        friendList: response
+        this.setState({
+          friendList: response })
+      }).fail((message) => {
+        alert("Oops! Something went wrong! *shrug*")
       })
-    })
-  }
+    }
 
   render(){
     let books = []
