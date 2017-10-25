@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SearchBar from './components/SearchBar';
+import Content from './components/Content';
+import NavBar from './components/NavBar';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
+  constructor() {
+    super();
+    this.login = this.login.bind(this);
+    this.state = {
+      user: {
+        name: null,
+        id: null,
+        token: null,
+      },
+    };
+  }
+
+  login({ name, id, token }) {
+    this.setState({
+      user: {
+        name,
+        id,
+        token,
+      },
+    });
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <SearchBar />
+        <Content login={this.login} />
+        <NavBar />
       </div>
     );
   }
