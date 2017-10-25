@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import BookIndex from './components/books/BooksIndex'
 import Profile from './components/profile/Profile'
+import Login from './components/sessions/Login'
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   constructor() {
@@ -29,7 +30,7 @@ class App extends Component {
             }
           />
         </div>
-
+        <Login user={{}}/>
         <div className="mainContent">
           {chosenContent[this.state.content]}
         </div>
