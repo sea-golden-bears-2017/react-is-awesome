@@ -4,7 +4,7 @@ class Book extends Component {
   render() {
     return (
       <div>
-        <button>Read</button>{this.props.title} by {this.props.author}
+        {this.props.title} by {this.props.author}
       </div>
     );
   }

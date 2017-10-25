@@ -5,6 +5,7 @@ import $ from 'jquery';
 import NavBar from './components/NavBar';
 import Header from './components/Header';
 import Content from './containers/Content';
+import Footer from './components/Footer';
 // eslint-disable-next-line react/prefer-stateless-function
 
 class App extends Component {
@@ -54,6 +55,7 @@ class App extends Component {
         <Content books={this.state.books} current={this.state.current} name={this.state.name} handleUserLogin={this.handleUserLogin}
         user_id={this.state.user_id}
         token={this.state.token} />
+        <Footer />
       </div>
     );
   }
