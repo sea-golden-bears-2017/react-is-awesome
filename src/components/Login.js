@@ -26,6 +26,7 @@ class Login extends Component {
       data
     }).done((response) => {
       this.props.login(response, this.state.username);
+      console.log(response)
     });
   }
 
