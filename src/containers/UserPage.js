@@ -29,8 +29,19 @@ class UserPage extends Component {
       url: `https://react-is-awesome-backend.herokuapp.com/users/${this.props.userId}/friends`,
       data: {token: this.props.token}
     }).done((response) => {
+      this.setState({
+        friendList: response })
+    }).fail((message) => {
+      alert("Oops! Something went wrong! *shrug*")
+    })
+
+    $.ajax({
+      method: 'GET',
+      url: `https://react-is-awesome-backend.herokuapp.com/users/${this.props.userId}/books`,
+      data: {token: this.props.token}
+    }).done((response) => {
         this.setState({
-          friendList: response })
+          bookList: response })
       }).fail((message) => {
         alert("Oops! Something went wrong! *shrug*")
       })
