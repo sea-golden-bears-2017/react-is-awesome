@@ -17,21 +17,21 @@ class App extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.state = {
-      currentUser: 'oscar',
+      currentUser: '',
       books: [],
-      booksRead: [{id: 85, title: "The Wives of Bath", author: "Miss Mackenzie Purdy", publisher: "Paulist Press", genre: "Mystery"}, {id: 358, title: "Great Work of Time", author: "Berry Weissnat", publisher: "Hackett Publishing Company", genre: "Essay"}, {id: 3, title: "Postern of Fate", author: "Cade Leuschke", publisher: "Charles Scribner's Sons", genre: "Essay"}, {id: 15, title: "Quo Vadis", author: "Mr. Ericka Hills", publisher: "Kensington Books", genre: "Fantasy"}, {id: 18, title: "Fame Is the Spur", author: "Dashawn Wisozk", publisher: "Tartarus Press", genre: "Short story"}, {id: 83, title: "Mr Standfast", author: "Johathan Kohler", publisher: "Kodansha", genre: "Metafiction"}],
-      loginForm: false,
+      booksRead: [],
+      loginForm: true,
       name: '',
       password: '',
-      token: "eyJ0b2tlbiI6MTAzfQ==",
-      id: 103,
+      token: "",
+      id: '',
       error: '',
     }
   }
 
   getTitleAuthor(books) {
     return books.map((book) => {
-      return {title: book.title, author: book.author}
+      return {id: book.id, title: book.title, author: book.author, genre: book.genre}
     })
   }
 
@@ -51,8 +51,12 @@ class App extends Component {
 
   addRead(event) {
     const books = this.state.booksRead.slice();
-    books.push(event.target.id)
-    this.setState({ booksRead: books })
+    const bookId = event.target.id;
+    this.postBook(bookId);
+    // const bookList = this.state.books;
+    // const book = this.state.books.find((book) => book.id === bookId);
+    // books.push(book);
+    // this.setState({ booksRead: books });
   }
 
   handleSubmit(event) {
@@ -65,13 +69,9 @@ class App extends Component {
       data: {user: {name: name, password: password}}
     }).done((response) => {
       const tokenResponse = response.token
-      this.setState({ token: tokenResponse })
-      this.setState({ loginForm: false })
-      this.setState({ currentUser: name })
-      this.setState({ password: null })
-      this.setState({ name: null })
-      this.setState({ id: response.user_id })
+      this.setState({ token: tokenResponse, currentUser: name, password: '', name: '', id: response.user_id })
       this.pullBooks()
+      this.setState({ loginForm: false })
     }).fail((msg, response) => {
       this.setState({ error: msg.responseJSON.message })
       this.setState({ password: '' })
@@ -85,6 +85,17 @@ class App extends Component {
       data: {token: this.state.token},
     }).done((response) => {
       this.setState({ booksRead: response })
+    })
+  }
+
+  postBook(bookId) {
+    $.ajax({
+      url: `https://react-is-awesome-backend.herokuapp.com/users/${this.state.id}/books/${bookId}`,
+      data: {token: this.state.token},
+      method: "PUT",
+    }).done((response) => {
+      // this.setState({ booksRead: response })
+      this.pullBooks()
     })
   }
 

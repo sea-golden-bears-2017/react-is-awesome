@@ -22,9 +22,8 @@ class Cell extends Component {
       }
     }
     return (
-      <div className={"Cell " + this.props.hasReadABook} id={this.props.genre} onClick={this.props.onClick} style={setColorStyle()}>
+      <div className='Cell' id={this.props.genre} onClick={this.props.onClick} style={setColorStyle()}>
         <p>{this.props.genre}</p>
-        <p>{this.props.hasReadABook}</p>
       </div>
     );
   }

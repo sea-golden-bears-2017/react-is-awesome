@@ -17,7 +17,7 @@ class ListItem extends Component {
       return (<tr>
                 <td className="title">{book.title}</td>
                 <td>{book.author}</td>
-                <td><button id={book.title} onClick={this.props.addRead}>I've Read</button></td>
+                <td><button id={book.id} onClick={this.props.addRead}>I've Read</button></td>
               </tr>
               )
             })}
