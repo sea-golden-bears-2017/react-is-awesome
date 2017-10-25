@@ -20,8 +20,12 @@ class App extends Component {
     this.login = this.login.bind(this);
   }
 
-  login(response) {
-    this.setState({user_id: response.id, page: 'profile', token: response.token});
+  login(response, username) {
+    this.setState({ user_id: response.user_id,
+                    page: 'profile',
+                    token: response.token,
+                    username: username,
+                });
   }
 
   render() {
@@ -32,7 +36,7 @@ class App extends Component {
           <h1>Please Login</h1>
           <h2>Your book experience awaits</h2>
         </div>
-        {this.state.token ? <Profile /> : <Login login={(resp) => this.login(resp)} />}
+        {this.state.token ? <Profile user={this.state}/> : <Login login={this.login} />}
       </div>
     );
   }

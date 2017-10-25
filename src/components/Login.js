@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 class Login extends Component {
+  // krystal
+  // admin_cindy
   constructor(props){
     super(props);
     this.state = {
@@ -23,7 +25,7 @@ class Login extends Component {
       url: 'https://react-is-awesome-backend.herokuapp.com/sessions',
       data
     }).done((response) => {
-      this.props.login(response);
+      this.props.login(response, this.state.username);
     });
   }
 
