@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import BookShelf from './components/BookShelf.js';
-import FriendShelf from './components/FriendShelf.js';
 import Login from './components/Login.js';
 import Profile from './components/Profile.js';
 
@@ -34,7 +32,7 @@ class App extends Component {
                     username: username,
                 });
   }
-  
+
   render() {
     return (
       <div className="App">
