@@ -10,8 +10,16 @@ class Board extends Component {
     super();
   }
 
+  hasRead(genre, booksRead) {
+    if (booksRead.find((book) => book.genre === genre )) {
+      return "true"
+    } else {
+      return 'false'
+    }
+  }
+
   createCell(genre) {
-    return <Cell genre={genre} onClick={this.props.searchFunction} />
+    return <Cell genre={genre} onClick={this.props.searchFunction} hasReadABook={this.hasRead(genre, this.props.booksRead)}/>
   }
 
   render() {

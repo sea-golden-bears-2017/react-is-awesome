@@ -15,19 +15,24 @@ class Login extends Component {
     this.props.onPasswordChange(event.target.value);
   }
 
+
   render() {
+    const errorStyle = {color: 'red'}
     return (
-      <form onSubmit={this.props.onSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.props.name} onChange={this.handleChange} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={this.props.password} onChange={this.isThePassword} />
-        </label>
-        <input type="submit" />
-      </form>
+      <div>
+        <form onSubmit={this.props.onSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.props.name} onChange={this.handleChange} />
+          </label>
+          <label>
+            Password:
+            <input type="password" value={this.props.password} onChange={this.isThePassword} />
+          </label>
+          <input type="submit" />
+        </form>
+        <p style={errorStyle}>{this.props.error}</p>
+      </div>
     )
   }
 }
