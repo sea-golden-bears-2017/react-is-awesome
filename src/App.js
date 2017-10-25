@@ -13,6 +13,7 @@ class App extends Component {
     this.switchPage = this.switchPage.bind(this);
     this.getFriends = this.getFriends.bind(this);
     this.makeFriends = this.makeFriends.bind(this);
+    this.friendsBooksAre = this.friendsBooksAre.bind(this);
     this.state = {
       user: {
         name: null,
@@ -35,10 +36,6 @@ class App extends Component {
     });
     this.switchPage('activityLog');
     this.getFriends();
-  }
-
-  newFriend(name) {
-    return name
   }
 
   makeFriends(friend) {
@@ -67,6 +64,7 @@ class App extends Component {
       this.setState({
         friends: response,
       });
+      this.friendsBooksAre();
     });
   }
 
@@ -74,6 +72,22 @@ class App extends Component {
     this.setState({
       content: page,
     });
+  }
+
+  booklist(person_id) {
+    $.ajax({
+      url: `https://react-is-awesome-backend.herokuapp.com/users/${person_id}/books`,
+      data: {
+        token: `${this.state.user.token}\\n`,
+      },
+    }).done((response) => {
+      console.log(response)
+      this.state.friendsBooks.push(response);
+    });
+  }
+
+  friendsBooksAre() {
+    this.state.friends.forEach(friend => this.booklist(friend.id));
   }
 
   render() {
