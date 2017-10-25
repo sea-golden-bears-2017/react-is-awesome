@@ -17,7 +17,7 @@ class Content extends Component {
     if (this.props.current === 'login' && this.props.name === '') {
       return(<div><Login name={this.props.name} nameHandOff={this.nameHandOff}/></div>)
     } else if (this.props.current === 'home') {
-      return(<div><UserPage books={this.props.books} friends={this.props.friends}/></div>)
+      return(<div><UserPage books={this.props.books} userId={this.props.user_id} token={this.props.token}/></div>)
     } else if (this.props.current === 'book') {
       return(<div><BookIndex books={this.props.books} /></div>)
     }

@@ -12,7 +12,6 @@ class App extends Component {
     super();
     this.state = {
       books: [],
-      friends: [],
       current: 'login',
       token: '',
       name: '',
@@ -29,14 +28,6 @@ class App extends Component {
       this.setState({
         books: response });
     });
-
-    $.ajax({
-      method: 'GET',
-      url: 'https://react-is-awesome-backend.herokuapp.com/users'
-    }).done((response) => {
-      this.setState({
-        friends: response });
-    })
   }
 
   go(event) {
@@ -59,7 +50,9 @@ class App extends Component {
       <div className="App">
         <Header name={this.state.name} />
         <NavBar onClick={(event) => this.go(event)} username={this.state.username} />
-        <Content books={this.state.books} friends={this.state.friends} current={this.state.current} name={this.state.name} handleUserLogin={this.handleUserLogin}/>
+        <Content books={this.state.books} current={this.state.current} name={this.state.name} handleUserLogin={this.handleUserLogin}
+        user_id={this.state.user_id}
+        token={this.state.token} />
       </div>
     );
   }
