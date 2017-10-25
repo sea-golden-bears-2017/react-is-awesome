@@ -20,7 +20,9 @@ class AddFriends extends Component {
   render() {
     return (
       <div className="friendadder">
-        <form onSubmit={ (event) => this.props.onAddFriends(this.state.name)}>
+        <form onSubmit={ (event) => {
+          event.preventDefault();
+          this.props.onAddFriend(this.state.name) }}>
           <input onChange={this.handleChange} type="text" name="name" value={this.state.name} placeholder="Friends Name" />
           <input type="submit" value="Add Friend" />
         </form>

@@ -15,7 +15,7 @@ class Content extends Component {
     } else if (this.props.page === 'addfriends'){
       return (
         <div className="container">
-          <AddFriends />
+          <AddFriends onAddFriend={this.props.onMakeFriends}/>
         </div>
       );
     } else {

@@ -34,17 +34,21 @@ class App extends Component {
       },
     });
     this.switchPage('activityLog');
-    this.makeFriends();
     this.getFriends();
   }
 
-  makeFriends() {
+  newFriend(name) {
+    return name
+  }
+
+  makeFriends(friend) {
+    event.preventDefault();
     $.ajax({
       url: `https://react-is-awesome-backend.herokuapp.com/users/${this.state.user.id}/friends`,
       method: 'POST',
       data: {
         friend: {
-          name: 'krystal',
+          name: friend,
         },
         token: `${this.state.user.token}\\n`,
       },
@@ -77,7 +81,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar />
-        <Content login={this.login} page={this.state.content} onAddFriends={this.makeFriends} />
+        <Content login={this.login} page={this.state.content} onMakeFriends={this.makeFriends} />
         <NavBar onIconClick={this.switchPage} />
       </div>
     );
