@@ -10,9 +10,16 @@ class Book extends Component {
     }
   }
 
+  clickHandle(event) {
+    console.log(event)
+  }
+
   renderButton() {
     if (this.props.button === 'true') {
-      return <button>{this.buttonValue()}</button>
+      const handler = () => {
+        this.props.onClick(this.props.id);
+      }
+      return <button onClick={handler}>{this.buttonValue()}</button>
     }
   }
 
