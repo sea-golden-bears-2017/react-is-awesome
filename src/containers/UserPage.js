@@ -5,7 +5,7 @@ import $ from 'jquery';
 import Section from '../components/Section';
 
 const createBook = ({title, author, id}) => {
-  return <Book key={id} title={title} author={author} />
+  return <Book buttonAction="add" button="true" key={id} title={title} author={author} />
 }
 
 const createFriend = ({name, id}) => {

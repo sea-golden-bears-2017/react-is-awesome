@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
     return(
       <div className="App-footer">
-        <img class="footer-image" src={footerImage} />
+        <img className="footer-image" src={footerImage} alt="a bunch of books"/>
       </div>
     )
   }

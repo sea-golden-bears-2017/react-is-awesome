@@ -3,7 +3,7 @@ import Book from '../components/Book';
 import Section from '../components/Section';
 
 const createBook = ({title, author, id}) => {
-  return <Book key={id} title={title} author={author} />
+  return <Book button="true" key={id} title={title} author={author} />
 }
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -16,7 +16,10 @@ class BookIndex extends Component {
     const books = this.props.books.map(createBook);
     return(
       <div className="section-container">
-        <Section key="books" header="Books">{books}</Section>
+        <Section
+          key="books"
+          button="true"
+          header="Books">{books}</Section>
       </div>
     )}
 }

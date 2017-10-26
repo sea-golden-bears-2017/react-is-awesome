@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vw;
 }
 
 .App-logo {
@@ -51,4 +52,34 @@ nav ul {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+.block {
+  display: block;
+}
+
+.login-form {
+  padding: 20px;
+  width: 200px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px grey;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.label {
+  text-align: left;
+}
+
+.login-button {
+  width: 100%;
+  padding: 5px;
+  font-size: 1em;
+  background-color: teal;
+  border: 1px solid teal;
 }

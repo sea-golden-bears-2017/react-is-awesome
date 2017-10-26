@@ -51,12 +51,12 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <label>username
-        <input onChange={(event) => this.onChange(event)} value={this.state.value} type="text" name="username" /></label>
-        <label>password
-        <input onChange={(event) => this.onChange(event)} value={this.state.value} type="password" name="password" /></label>
-        <input type="submit" value="submit" />
+      <form className="login-form" onSubmit={this.onSubmit}>
+        <label className="block label">username</label>
+        <input className="block input" onChange={(event) => this.onChange(event)} value={this.state.value} type="text" name="username" />
+        <label className="block label">password</label>
+        <input className="block input" onChange={(event) => this.onChange(event)} value={this.state.value} type="password" name="password" />
+        <button className="block login-button" type="submit">Submit</button>
       </form>
     );
   }
