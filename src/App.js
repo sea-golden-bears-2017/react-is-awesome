@@ -53,10 +53,6 @@ class App extends Component {
     const books = this.state.booksRead.slice();
     const bookId = event.target.id;
     this.postBook(bookId);
-    // const bookList = this.state.books;
-    // const book = this.state.books.find((book) => book.id === bookId);
-    // books.push(book);
-    // this.setState({ booksRead: books });
   }
 
   handleSubmit(event) {
@@ -73,9 +69,7 @@ class App extends Component {
       this.pullBooks()
       this.setState({ loginForm: false })
     }).fail((msg, response) => {
-      this.setState({ error: msg.responseJSON.message })
-      this.setState({ password: '' })
-      this.setState({ name: '' })
+      this.setState({ error: msg.responseJSON.message, password: '', name: '' })
     })
   }
 
@@ -117,7 +111,7 @@ class App extends Component {
     const name = this.state.name;
     const password = this.state.password;
     const error = this.state.error;
-    if (this.state.loginForm === true){
+    if (this.state.loginForm === true) {
       return (
       <Login
         onSubmit={this.handleSubmit}
@@ -126,13 +120,18 @@ class App extends Component {
         name={name}
         error={error} />
       )
-    }else {
+    } else {
+      let list = null;
+      if (this.state.books.length > 0) {
+        list = <GenreList bookList={this.state.books}
+                   addRead={this.addRead} />;
+      }
     return (
-      <div className="App" onClick={this.clickOff}>
+      <div className="App" onClick={this.clickOff} >
         <Header title={this.state.currentUser} />
         <Board searchFunction={this.searchByGenre}
-               booksRead={this.state.booksRead}/>
-        <GenreList bookList={this.state.books} addRead={this.addRead}/>
+               booksRead={this.state.booksRead} />
+        {list}
       </div>
     );
     }
