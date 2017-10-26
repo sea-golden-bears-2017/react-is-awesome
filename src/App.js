@@ -34,8 +34,8 @@ class App extends Component {
         token,
       },
     });
-    this.switchPage('activityLog');
     this.getFriends();
+    this.switchPage('activityLog');
   }
 
   makeFriends(friend) {
@@ -81,8 +81,12 @@ class App extends Component {
         token: `${this.state.user.token}\\n`,
       },
     }).done((response) => {
-      console.log(response)
-      this.state.friendsBooks.push(response);
+      console.log(response);
+      let tempBooks = this.state.friendsBooks.slice();
+      tempBooks[person_id] = response;
+      this.setState({
+        friendsBooks: tempBooks,
+      })
     });
   }
 
@@ -95,7 +99,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar />
-        <Content login={this.login} page={this.state.content} onMakeFriends={this.makeFriends} />
+        <Content login={this.login} page={this.state.content} onMakeFriends={this.makeFriends} friendBooks={this.state.friendsBooks} friends={this.state.friends} />
         <NavBar onIconClick={this.switchPage} />
       </div>
     );

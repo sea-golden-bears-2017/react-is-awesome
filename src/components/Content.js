@@ -21,7 +21,7 @@ class Content extends Component {
     } else {
       return (
         <div className="container">
-          <ActivityLog />
+          <ActivityLog friendBooks={this.props.friendsBooks} friends={this.props.friends} />
         </div>
       );
     }
