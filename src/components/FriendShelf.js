@@ -9,9 +9,12 @@ class FriendShelf extends Component {
     this.state = {
       friends: [],
       allUsers: [],
+      searchedUsers: [],
+      search: "",
     }
     this.addFriends = this.addFriends.bind(this);
     this.konnekt_to = this.konnekt_to.bind(this);
+    this.search = this.search.bind(this);
   }
 
   componentWillMount() {
@@ -45,7 +48,7 @@ class FriendShelf extends Component {
         this.setState({friends: response, allUsers: []});
       });
   }
-  
+
   unFreund(id){
       $.ajax({
         method: "DELETE",
@@ -55,6 +58,12 @@ class FriendShelf extends Component {
         const notFriends = this.state.friends.filter((friend) => friend.id !== id)
         this.setState({friends: notFriends})
       });
+  }
+
+  search(e){
+    const new_search = e.target.value;
+    const filteredUsers = this.state.allUsers.filter(user => user.name.startsWith(new_search));
+    this.setState({searchedUsers: filteredUsers, search: new_search});
   }
 
   render() {
@@ -70,8 +79,9 @@ class FriendShelf extends Component {
                 </div>
             );})}
         </ul>
+        {this.state.allUsers.length !== 0 ? <input type="text" onChange={this.search} value={this.state.search} /> : null}
         <ul>
-          {this.state.allUsers.map(user => {
+          {(this.state.searchedUsers.length === 0 ? this.state.allUsers : this.state.searchedUsers).map(user => {
             return(
               <div>
                 <AddFriend name={user.name} user_id={user.id} />
@@ -80,7 +90,7 @@ class FriendShelf extends Component {
             );
           })}
         </ul>
-        <button onClick={this.addFriends}>Add Friends!</button>
+        <button onClick={this.addFriends}>Make Friends... Please...</button>
       </div>
     )
   };

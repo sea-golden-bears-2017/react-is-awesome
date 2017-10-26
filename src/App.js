@@ -16,15 +16,16 @@ class App extends Component {
     //   page: 'home',
     //   user_id: null,
     //   book_id: null,
-    //   token: eyJ0b2tlbiI6MTYxfQ==\n
+    //   token: null
     // };
+
     this.state = {
-      page: 'home',
-      user_id: 161,
-      book_id: null,
-      token: "eyJ0b2tlbiI6MTYxfQ==\n",
-      username: "krystal"
-    };
+      token: "eyJ0b2tlbiI6N30=\n",
+      user_id: 7,
+      page: 'profile',
+      username: 'jaren'
+    }
+
     this.login = this.login.bind(this);
   }
 

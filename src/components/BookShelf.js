@@ -40,7 +40,7 @@ class BookShelf extends Component {
       data: { token: this.props.user.token }
     }).done((response) => {
       console.log(response)
-      this.getUserBooks()
+      this.setState({books: response, library: false});
     })
   }
 

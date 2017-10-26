@@ -7,7 +7,7 @@ class Profile extends Component {
     return(
       <div>
         <h1>{this.props.user.username}</h1>
-        <BookShelf user={this.props.user} library={true}/>
+        <BookShelf user={this.props.user} library={false}/>
         <FriendShelf user={this.props.user}/>
       </div>
     );
