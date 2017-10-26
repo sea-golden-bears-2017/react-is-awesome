@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import BookShelf from './components/BookShelf.js';
-import FriendShelf from './components/FriendShelf.js';
 import Login from './components/Login.js';
 import Profile from './components/Profile.js';
 
@@ -13,9 +11,12 @@ class App extends Component {
     // TODO: Come back 2 dis
     this.state = {
       page: 'home',
-      user_id: null,
+      // user_id: null,
       book_id: null,
-      token: null
+      // token: null,
+      username: 'dannie',
+      user_id: 11,
+      token: 'eyJ0b2tlbiI6MTF9',
     };
     this.login = this.login.bind(this);
   }
